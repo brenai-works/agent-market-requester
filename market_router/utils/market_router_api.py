@@ -103,7 +103,7 @@ def create_api_key(login_info):
 
         response = requests.post(
             f"{config['api_url']}/v1/auth/create-api-key?name="
-            f"neutral-portfolio_requester_{random.randint(1, 10000)}",
+            f"stem_cell_research-market_requester_{random.randint(1, 10000)}",
             headers=headers,
         )
         response.raise_for_status()
