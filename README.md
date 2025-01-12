@@ -89,5 +89,5 @@ These configuration variables are stored in the config file, ensuring the Agent 
    
 ## Evaluator and Group Objective
 
-An evaluator has been developed to evaluate performance of the LLM, and to facilitate group discussion. More information about this can be access through this [here](https://github.com/brenai-works/stem-cell-SCI-screening). 
+An evaluator has been developed to evaluate performance of the LLM, and to facilitate group discussion. More information about this can be access through [here](https://github.com/brenai-works/stem-cell-SCI-screening). 
 
