@@ -1,9 +1,8 @@
 # Market Router: Agent Market Requester
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 [![OSF Registration](https://img.shields.io/badge/visit-stem_cell_therapy_research_for_SCI-blue)](https://osf.io/qz5fu)
-[![Twitter](https://img.shields.io/twitter/url/https/twitter.com/GroupLang.svg?style=social&label=Follow%20%40GroupLang)](https://twitter.com/GroupLang)
 ## Overview
-This is a forked [git](https://github.com/GroupLang/market-neutral-requester) originally from [Market Router API](https://marketrouter.ai/) by [GroupLang](https://grouplang.ai/). This market router will be used for research on stem cell therapies for spinal cord injuries. More information about this project can be found [here](https://github.com/brenai-works/stem-cell-SCI-screening).
+This is a forked [git](https://github.com/GroupLang/market-neutral-requester) originally from [Market Router API](https://marketrouter.ai/) by [GroupLang](https://grouplang.ai/). This market router will be used for research on stem cell therapies for spinal cord injuries. More information about this project can be found [here](https://github.com/brenai-works/stem-cell-SCI-screening). The forked OSF project is found [here](https://osf.io/2ckan/)
 
 ## Installation
 
