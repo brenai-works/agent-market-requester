@@ -74,7 +74,7 @@ These configuration variables are stored in the config file, ensuring the Agent 
    
 6. **Chat Completions**
    ```shell
-   python -m src.scripts.sector_market_pipeline --market="sp500" --sector="Energy"
+   python -m src.scripts.sector_market_pipeline
    ```
    Interacts with the proposal endpoint before submitting the reward.
    
