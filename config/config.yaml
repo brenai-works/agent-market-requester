@@ -8,7 +8,7 @@ model: "gpt-4o-mini"
 temperature: 0.9
 max_tokens: 16384
 messages: [{"role": "user", "content": "First message from market neutral strategy to test the system."}]
-background: "Given a collection of news articles focused on a specific sector of the S&P 500, the system should process the information to generate investment actions (BUY, HOLD, SELL) for each stock within the sector."
+background: ""
 max_credit_per_instance: 0.02
 percentage_reward: 1
 instance_timeout: 65

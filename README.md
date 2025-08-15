@@ -1,66 +1,47 @@
-# Market Router: Market Neutral Requester
+# Agent Market Requester: Workgroup Assistant
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
-[![Website](https://img.shields.io/badge/Visit-marketrouter.ai-blue)](https://marketrouter.ai)
-[![Twitter](https://img.shields.io/twitter/url/https/twitter.com/GroupLang.svg?style=social&label=Follow%20%40GroupLang)](https://twitter.com/GroupLang)
+[![OSF Registration](https://img.shields.io/badge/visit-stem_cell_therapy_research_for_SCI-blue)](https://osf.io/qz5fu)
+
 ## Overview
-The Market Neutral Requester is a service designed to facilitate neutral portfolio creation through [Market Router API](https://marketrouter.ai/). It leverages the [exa API](https://exa.ai/) to download sector-specific news, evaluates stocks within those sectors, and computes market neutral metrics to guide investment decisions.
 
-The Neutral Portfolio Requester creates the following instance:
-
-<p>
-  <img src="https://github.com/user-attachments/assets/460d13c7-533a-47dd-bda5-535cedb22b9f" width="300">
-</p>
-
-Then, when the instance is resolved, it evaluates the proposal as follows:
-
-- Download news for each S&P sector using [exa API](https://exa.ai/)
-  - Healthcare
-  - Industrials
-  - Information Technology
-  - Consumer Discretionary
-  - Consumer Staples
-  - Energy
-  - Financials
-  - Materials
-  - Real Estate
-  - Telecommunication Services
-  - Utilities
-- Evaluate each stock of the given sector using the provided system
-
-<p align="center">
-  <img src="https://github.com/user-attachments/assets/f09e3b94-82f9-4e41-8562-5a56840220ca" width="500">
-</p>
+This is a forked [git](https://github.com/GroupLang/market-neutral-requester) originally from [Market Router API](https://marketrouter.ai/) by [GroupLang](https://grouplang.ai/). This market router will be used for research on stem cell therapies for spinal cord injuries. More information about this project can be found [here](https://github.com/brenai-works/stem-cell-SCI-screening). The forked OSF project is found [here](https://osf.io/2ckan/)
 
 ## Installation
 
 1. **Clone the repository**
 
    ```shell
-   git clone https://github.com/GroupLang/market-neutral-requester.git
-   cd market-neutral-requester
+   $ git https://github.com/brenai-works/agent-market-requester.git
+   $ cd agent-market-requester 
    ```
+
 2. **Install required libraries**
+   
    ```shell
-   python3.11 -m venv venv
-   source venv/bin/activate
-   pip install -r requirements.txt
+   $ python3 -m venv venv
+   $ source venv/bin/activate
+   $ pip install -r requirements.txt
    ```
+
 3. **Set up environment space**
+
     - **Set up environment variables**
         
         Copy the sample environment file and configure it as per your requirements.
 
         ```shell
-        [ ! -f .env ] && cp .env.template .env
+        $ [ ! -f .env ] && cp .env.template .env
         ```
 
 ## Configuration
 
 - **Market Router**:
+
   - **Username, Fullname, Email, Password**: These credentials are used for authentication and identification in the market router. If the user is already registered, these parameters are not necessary; instead, add the Market Router API key to the `.env` file as `MARKET_ROUTER_KEY`.
   - **Deposit Amount**: Specify the initial deposit amount for transactions in the market router if needed.
   
 - **Instance**:
+
   - **Model**: Specify the model used for executing the strategy (eg. gpt-3.5-turbo).
   - **Messages**: List initial messages or commands to be processed by the system.
   - **Background**: Context information that describes the instance task to be done.
@@ -70,11 +51,12 @@ Then, when the instance is resolved, it evaluates the proposal as follows:
   - **Gen Reward**: The reward signal observed and reported by the requester to the marketplace.
   - **Percentage Reward**: The percentage of the Gen Reward that the requester will pay to the provider once the interaction is completed.
 
-These configuration variables are stored in the config file, ensuring the Neutral Portfolio Provider can effectively interact with the Market Router by managing its proposals and financial transactions.
+These configuration variables are stored in the config file, ensuring the Agent Market Provider can effectively interact with the Market Router by managing its transactions.
 
 ## Key Components and Processes
 
 **Market Router Scripts:**
+
 1. **Register User Script**
    ```shell
    python -m market_router.scripts.register
@@ -101,7 +83,7 @@ These configuration variables are stored in the config file, ensuring the Neutra
    
 6. **Chat Completions**
    ```shell
-   python -m src.scripts.sector_market_pipeline --market="sp500" --sector="Energy"
+   python -m src.scripts.sector_market_pipeline
    ```
    Interacts with the proposal endpoint before submitting the reward.
    
@@ -110,28 +92,20 @@ These configuration variables are stored in the config file, ensuring the Neutra
    python -m market_router.scripts.generated_reward
    ```
    This script submits the generated reward once the conversation with the `gen reward timeout` is terminated.
-   
+      
+## Evaluator and Group Objective
 
-   
-## Example
+An evaluator has been developed to evaluate performance of the LLM, and to facilitate group discussion. More information about this can be access through [here](https://github.com/brenai-works/stem-cell-SCI-screening). 
 
-This section shows a conversation once Instance and Proposal are created and resolved.
+## Multi-Step Agent Scenerio for Workgroup Assistant and Agent.Market Requester [Draft version]
 
-#### Input
+Below is a scenerio for a multi-step agent for Workgroup Assistants. The Workgroup Assistant agent can prompt in natural language and python programming code to request for an AI Service Agent to support group voting.
 
-```json
-{
-  "message": "The webpage discusses the importance of dividend-paying stocks as a way to cushion portfolios from market volatility and enhance returns. Three attractive dividend stocks recommended by Wall Street analysts are highlighted. The first pick is Kimberly-Clark (KMB), a consumer products company with a dividend yield of 3.5%. The second pick is Chord Energy (CHRD), an oil and gas operator that recently completed an acquisition and offers a 9% payout yield. The third pick is Cisco Systems (CSCO), a technology company with a quarterly dividend yielding 3.5%. Analysts are positive about Cisco's prospects following an investor day event and the acquisition of Splunk. Cisco expects growth in revenue and earnings per share in the coming years.",
-  "model": "gpt-3.5-turbo"
-}
-```
-
-#### Output
-
-```json
-{
-    "name": "ExxonMobil",
-    "explanation": "Given the positive sentiment towards dividend-paying stocks and the attractive dividend yields of the highlighted companies, there might be a shift in investor preference towards such stocks. ExxonMobil, being an oil and gas company, could face increased competition for investor attention due to the mention of Chord Energy with its 9% dividend yield. This could lead to potential selling pressure on ExxonMobil.",
-    "action": "SELL"
-}
-```
+**Agent Prompt Directives (based on state-transitions)**:
+1. __[`>>Instruct`]__ the AI service agent on an action.
+2. __[`>>Listen`]__ to instructions from human or AI agent.
+3. __[`>>Collect`]__ information from human or AI agent.
+4. __[`>>Decide`]\<`OR|AND|NOR`\>__ action of AI service agent to act on using logical predicate.
+5. __[`>>Outcome`]__ of the AI agent service actions.
+6. __[`#Intention`]__ of the AI service agent state ready for next action.
+7. __[`#Context`]__ of the AI service agent state ready for next action.
