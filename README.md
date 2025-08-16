@@ -1,22 +1,3 @@
-<style>
-    .boxed {
-    background: #F2F2F2;
-    color: black;
-    border: 3px solid #535353;
-    margin: 0px auto;
-    width: 456px;
-    padding: 10px;
-    border-radius: 10px;
-    }
-    .num {
-    background: #F2F2F2;
-    color: black;
-    border: 3px solid #535353;
-    width: 25px;
-    border-radius: 10px;
-    }
-</style>
-
 # Agent Market Requester: Workgroup Assistant
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 [![OSF Registration](https://img.shields.io/badge/visit-stem_cell_therapy_research_for_SCI-blue)](https://osf.io/qz5fu)
@@ -277,11 +258,8 @@ Below is a scenerio for a multi-step agent for Workgroup Assistants. The Workgro
 | G |
 | -- |
 
-<p align="center">
-<br />
-<font size="4pt"><b>AI Service Agent Discovery...</b></font>
-<br />
-</p>
+| AI Service Agent Discovery... |
+| ----------------------------- |
 
 | H |
 | -- |
