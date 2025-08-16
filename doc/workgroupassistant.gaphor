@@ -69,7 +69,6 @@
 <ref refid="f73b5f7a-7a59-11f0-a636-2eaf15039b2e"/>
 <ref refid="384d017a-7a51-11f0-a636-2eaf15039b2e"/>
 <ref refid="e7c84b0c-7a86-11f0-a636-2eaf15039b2e"/>
-<ref refid="5762db8e-7a88-11f0-a636-2eaf15039b2e"/>
 </reflist>
 </ownedPresentation>
 </Diagram>
@@ -891,7 +890,6 @@
 <ref refid="d882daae-7a45-11f0-a636-2eaf15039b2e"/>
 <ref refid="b6d7c35a-7a46-11f0-a636-2eaf15039b2e"/>
 <ref refid="47299d0e-7a59-11f0-a636-2eaf15039b2e"/>
-<ref refid="5a8b3bee-7a88-11f0-a636-2eaf15039b2e"/>
 </reflist>
 </incoming>
 <name>
@@ -903,7 +901,6 @@
 <ref refid="c61347c6-7a51-11f0-a636-2eaf15039b2e"/>
 <ref refid="f7b43078-7a52-11f0-a636-2eaf15039b2e"/>
 <ref refid="3a3ac346-7a56-11f0-a636-2eaf15039b2e"/>
-<ref refid="5a8b3bee-7a88-11f0-a636-2eaf15039b2e"/>
 </reflist>
 </outgoing>
 <presentation>
@@ -2167,59 +2164,6 @@
 <Constraint id="2799344e-7a87-11f0-a636-2eaf15039b2e">
 <transition>
 <ref refid="27963fa0-7a87-11f0-a636-2eaf15039b2e"/>
-</transition>
-</Constraint>
-<TransitionItem id="5762db8e-7a88-11f0-a636-2eaf15039b2e">
-<diagram>
-<ref refid="dc78ce48-79e1-11f0-8c71-2eaf15039b2e"/>
-</diagram>
-<horizontal>
-<val>0</val>
-</horizontal>
-<orthogonal>
-<val>0</val>
-</orthogonal>
-<subject>
-<ref refid="5a8b3bee-7a88-11f0-a636-2eaf15039b2e"/>
-</subject>
-<matrix>
-<val>(1.0, 0.0, 0.0, 1.0, -50.54195167155269, 537.7383511207238)</val>
-</matrix>
-<points>
-<val>[(0.466158181161596, -10.589322319747566), (-43.84091068531524, -10.589322319747453), (-43.84091068531524, 49.89067768025245), (16.414509457261545, 49.89067768025245), (16.414509457261538, 13.922677064783613)]</val>
-</points>
-<head-connection>
-<ref refid="c5701418-7a45-11f0-a636-2eaf15039b2e"/>
-</head-connection>
-<tail-connection>
-<ref refid="c5701418-7a45-11f0-a636-2eaf15039b2e"/>
-</tail-connection>
-</TransitionItem>
-<Transition id="5a8b3bee-7a88-11f0-a636-2eaf15039b2e">
-<container>
-<ref refid="86981348-79e2-11f0-8c71-2eaf15039b2e"/>
-</container>
-<guard>
-<ref refid="5a8ed66e-7a88-11f0-a636-2eaf15039b2e"/>
-</guard>
-<name>
-<val>collect</val>
-</name>
-<presentation>
-<reflist>
-<ref refid="5762db8e-7a88-11f0-a636-2eaf15039b2e"/>
-</reflist>
-</presentation>
-<source>
-<ref refid="c56fb16c-7a45-11f0-a636-2eaf15039b2e"/>
-</source>
-<target>
-<ref refid="c56fb16c-7a45-11f0-a636-2eaf15039b2e"/>
-</target>
-</Transition>
-<Constraint id="5a8ed66e-7a88-11f0-a636-2eaf15039b2e">
-<transition>
-<ref refid="5a8b3bee-7a88-11f0-a636-2eaf15039b2e"/>
 </transition>
 </Constraint>
 </gaphor>
