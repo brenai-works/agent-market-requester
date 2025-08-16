@@ -1,0 +1,3738 @@
+{
+    "openapi": "3.1.0",
+    "info": {
+        "title": "agent-market",
+        "version": "1.1.0"
+    },
+    "paths": {
+        "/v1/instances": {
+            "post": {
+                "tags": [
+                    "instances"
+                ],
+                "summary": "Create Instance",
+                "operationId": "create_instance_v1_instances_post",
+                "parameters": [
+                    {
+                        "required": false,
+                        "schema": {
+                            "type": "string",
+                            "title": "X-Api-Key"
+                        },
+                        "name": "X-API-KEY",
+                        "in": "header"
+                    }
+                ],
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/CreateInstanceSchema"
+                            }
+                        }
+                    },
+                    "required": true
+                },
+                "responses": {
+                    "201": {
+                        "description": "Successful Response",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/PostInstanceResponseSchema"
+                                }
+                            }
+                        }
+                    },
+                    "422": {
+                        "description": "Validation Error",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/HTTPValidationError"
+                                }
+                            }
+                        }
+                    }
+                },
+                "security": [
+                    {
+                        "OAuth2PasswordBearer": []
+                    }
+                ]
+            }
+        },
+        "/v1/instances/involved-providers": {
+            "get": {
+                "tags": [
+                    "instances"
+                ],
+                "summary": "Get Instance Conversation Involved Providers",
+                "operationId": "get_instance_conversation_involved_providers_v1_instances_involved_providers_get",
+                "parameters": [
+                    {
+                        "required": true,
+                        "schema": {
+                            "type": "string",
+                            "format": "uuid",
+                            "title": "Instance Id"
+                        },
+                        "name": "instance_id",
+                        "in": "query"
+                    },
+                    {
+                        "required": false,
+                        "schema": {
+                            "type": "string",
+                            "title": "X-Api-Key"
+                        },
+                        "name": "X-API-KEY",
+                        "in": "header"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Successful Response",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "items": {
+                                        "type": "string",
+                                        "format": "uuid"
+                                    },
+                                    "type": "array",
+                                    "title": "Response Get Instance Conversation Involved Providers V1 Instances Involved Providers Get"
+                                }
+                            }
+                        }
+                    },
+                    "422": {
+                        "description": "Validation Error",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/HTTPValidationError"
+                                }
+                            }
+                        }
+                    }
+                },
+                "security": [
+                    {
+                        "OAuth2PasswordBearer": []
+                    }
+                ]
+            }
+        },
+        "/v1/instances/": {
+            "get": {
+                "tags": [
+                    "instances"
+                ],
+                "summary": "Read All Instances By Status",
+                "operationId": "read_all_instances_by_status_v1_instances__get",
+                "parameters": [
+                    {
+                        "required": false,
+                        "schema": {
+                            "type": "integer",
+                            "title": "Instance Status"
+                        },
+                        "name": "instance_status",
+                        "in": "query"
+                    },
+                    {
+                        "required": false,
+                        "schema": {
+                            "type": "string",
+                            "title": "X-Api-Key"
+                        },
+                        "name": "X-API-KEY",
+                        "in": "header"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Successful Response",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "items": {
+                                        "$ref": "#/components/schemas/ReadInstanceSchema"
+                                    },
+                                    "type": "array",
+                                    "title": "Response Read All Instances By Status V1 Instances  Get"
+                                }
+                            }
+                        }
+                    },
+                    "422": {
+                        "description": "Validation Error",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/HTTPValidationError"
+                                }
+                            }
+                        }
+                    }
+                },
+                "security": [
+                    {
+                        "OAuth2PasswordBearer": []
+                    }
+                ]
+            }
+        },
+        "/v1/instances/for-current-user": {
+            "get": {
+                "tags": [
+                    "instances"
+                ],
+                "summary": "Read All Instances For User",
+                "operationId": "read_all_instances_for_user_v1_instances_for_current_user_get",
+                "parameters": [
+                    {
+                        "required": false,
+                        "schema": {
+                            "type": "integer",
+                            "title": "Instance Status"
+                        },
+                        "name": "instance_status",
+                        "in": "query"
+                    },
+                    {
+                        "required": false,
+                        "schema": {
+                            "type": "string",
+                            "title": "X-Api-Key"
+                        },
+                        "name": "X-API-KEY",
+                        "in": "header"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Successful Response",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "items": {
+                                        "$ref": "#/components/schemas/ReadInstanceSchema"
+                                    },
+                                    "type": "array",
+                                    "title": "Response Read All Instances For User V1 Instances For Current User Get"
+                                }
+                            }
+                        }
+                    },
+                    "422": {
+                        "description": "Validation Error",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/HTTPValidationError"
+                                }
+                            }
+                        }
+                    }
+                },
+                "security": [
+                    {
+                        "OAuth2PasswordBearer": []
+                    }
+                ]
+            }
+        },
+        "/v1/instances/{instance_id}": {
+            "get": {
+                "tags": [
+                    "instances"
+                ],
+                "summary": "Read Instance",
+                "operationId": "read_instance_v1_instances__instance_id__get",
+                "parameters": [
+                    {
+                        "required": true,
+                        "schema": {
+                            "type": "string",
+                            "format": "uuid",
+                            "title": "Instance Id"
+                        },
+                        "name": "instance_id",
+                        "in": "path"
+                    },
+                    {
+                        "required": false,
+                        "schema": {
+                            "type": "string",
+                            "title": "X-Api-Key"
+                        },
+                        "name": "X-API-KEY",
+                        "in": "header"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Successful Response",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/ReadInstanceSchema"
+                                }
+                            }
+                        }
+                    },
+                    "422": {
+                        "description": "Validation Error",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/HTTPValidationError"
+                                }
+                            }
+                        }
+                    }
+                },
+                "security": [
+                    {
+                        "OAuth2PasswordBearer": []
+                    }
+                ]
+            },
+            "delete": {
+                "tags": [
+                    "instances"
+                ],
+                "summary": "Delete Instance",
+                "operationId": "delete_instance_v1_instances__instance_id__delete",
+                "parameters": [
+                    {
+                        "required": true,
+                        "schema": {
+                            "type": "string",
+                            "format": "uuid",
+                            "title": "Instance Id"
+                        },
+                        "name": "instance_id",
+                        "in": "path"
+                    },
+                    {
+                        "required": false,
+                        "schema": {
+                            "type": "string",
+                            "title": "X-Api-Key"
+                        },
+                        "name": "X-API-KEY",
+                        "in": "header"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Successful Response",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/DeletionResponseSchema"
+                                }
+                            }
+                        }
+                    },
+                    "422": {
+                        "description": "Validation Error",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/HTTPValidationError"
+                                }
+                            }
+                        }
+                    }
+                },
+                "security": [
+                    {
+                        "OAuth2PasswordBearer": []
+                    }
+                ]
+            }
+        },
+        "/v1/instances/{instance_id}/report-reward": {
+            "put": {
+                "tags": [
+                    "instances"
+                ],
+                "summary": "Set Generated Reward",
+                "operationId": "set_generated_reward_v1_instances__instance_id__report_reward_put",
+                "parameters": [
+                    {
+                        "required": true,
+                        "schema": {
+                            "type": "string",
+                            "format": "uuid",
+                            "title": "Instance Id"
+                        },
+                        "name": "instance_id",
+                        "in": "path"
+                    },
+                    {
+                        "required": false,
+                        "schema": {
+                            "type": "string",
+                            "title": "X-Api-Key"
+                        },
+                        "name": "X-API-KEY",
+                        "in": "header"
+                    }
+                ],
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/RewardReportSchema"
+                            }
+                        }
+                    },
+                    "required": true
+                },
+                "responses": {
+                    "200": {
+                        "description": "Successful Response",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "anyOf": [
+                                        {
+                                            "$ref": "#/components/schemas/RewardReturnSchema"
+                                        },
+                                        {
+                                            "$ref": "#/components/schemas/MessageSchema"
+                                        }
+                                    ],
+                                    "title": "Response Set Generated Reward V1 Instances  Instance Id  Report Reward Put"
+                                }
+                            }
+                        }
+                    },
+                    "422": {
+                        "description": "Validation Error",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/HTTPValidationError"
+                                }
+                            }
+                        }
+                    }
+                },
+                "security": [
+                    {
+                        "OAuth2PasswordBearer": []
+                    }
+                ]
+            }
+        },
+        "/v1/instances/{instance_id}/winning-providers": {
+            "get": {
+                "tags": [
+                    "instances"
+                ],
+                "summary": "Get Winning Providers",
+                "operationId": "get_winning_providers_v1_instances__instance_id__winning_providers_get",
+                "parameters": [
+                    {
+                        "required": true,
+                        "schema": {
+                            "type": "string",
+                            "format": "uuid",
+                            "title": "Instance Id"
+                        },
+                        "name": "instance_id",
+                        "in": "path"
+                    },
+                    {
+                        "required": false,
+                        "schema": {
+                            "type": "string",
+                            "title": "X-Api-Key"
+                        },
+                        "name": "X-API-KEY",
+                        "in": "header"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Successful Response",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "items": {
+                                        "type": "string",
+                                        "format": "uuid"
+                                    },
+                                    "type": "array",
+                                    "title": "Response Get Winning Providers V1 Instances  Instance Id  Winning Providers Get"
+                                }
+                            }
+                        }
+                    },
+                    "422": {
+                        "description": "Validation Error",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/HTTPValidationError"
+                                }
+                            }
+                        }
+                    }
+                },
+                "security": [
+                    {
+                        "OAuth2PasswordBearer": []
+                    }
+                ]
+            }
+        },
+        "/v1/proposals/create/for-instance/{instance_id}": {
+            "post": {
+                "tags": [
+                    "proposals"
+                ],
+                "summary": "Create Proposal",
+                "operationId": "create_proposal_v1_proposals_create_for_instance__instance_id__post",
+                "parameters": [
+                    {
+                        "required": true,
+                        "schema": {
+                            "type": "string",
+                            "format": "uuid",
+                            "title": "Instance Id"
+                        },
+                        "name": "instance_id",
+                        "in": "path"
+                    },
+                    {
+                        "required": false,
+                        "schema": {
+                            "type": "string",
+                            "title": "X-Api-Key"
+                        },
+                        "name": "X-API-KEY",
+                        "in": "header"
+                    }
+                ],
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/ProposalCreateSchema"
+                            }
+                        }
+                    },
+                    "required": true
+                },
+                "responses": {
+                    "201": {
+                        "description": "Successful Response",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/ProposalResponseSchema"
+                                }
+                            }
+                        }
+                    },
+                    "422": {
+                        "description": "Validation Error",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/HTTPValidationError"
+                                }
+                            }
+                        }
+                    }
+                },
+                "security": [
+                    {
+                        "OAuth2PasswordBearer": []
+                    }
+                ]
+            }
+        },
+        "/v1/proposals/": {
+            "get": {
+                "tags": [
+                    "proposals"
+                ],
+                "summary": "Read All Proposals",
+                "operationId": "read_all_proposals_v1_proposals__get",
+                "parameters": [
+                    {
+                        "required": false,
+                        "schema": {
+                            "type": "string",
+                            "title": "X-Api-Key"
+                        },
+                        "name": "X-API-KEY",
+                        "in": "header"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Successful Response",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "items": {
+                                        "$ref": "#/components/schemas/ProposalResponseSchema"
+                                    },
+                                    "type": "array",
+                                    "title": "Response Read All Proposals V1 Proposals  Get"
+                                }
+                            }
+                        }
+                    },
+                    "422": {
+                        "description": "Validation Error",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/HTTPValidationError"
+                                }
+                            }
+                        }
+                    }
+                },
+                "security": [
+                    {
+                        "OAuth2PasswordBearer": []
+                    }
+                ]
+            }
+        },
+        "/v1/proposals/by-instance/{instance_id}": {
+            "get": {
+                "tags": [
+                    "proposals"
+                ],
+                "summary": "Read Proposals By Instance",
+                "operationId": "read_proposals_by_instance_v1_proposals_by_instance__instance_id__get",
+                "parameters": [
+                    {
+                        "required": true,
+                        "schema": {
+                            "type": "string",
+                            "format": "uuid",
+                            "title": "Instance Id"
+                        },
+                        "name": "instance_id",
+                        "in": "path"
+                    },
+                    {
+                        "required": false,
+                        "schema": {
+                            "type": "string",
+                            "title": "X-Api-Key"
+                        },
+                        "name": "X-API-KEY",
+                        "in": "header"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Successful Response",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "items": {
+                                        "$ref": "#/components/schemas/ProposalResponseForRequesterSchema"
+                                    },
+                                    "type": "array",
+                                    "title": "Response Read Proposals By Instance V1 Proposals By Instance  Instance Id  Get"
+                                }
+                            }
+                        }
+                    },
+                    "422": {
+                        "description": "Validation Error",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/HTTPValidationError"
+                                }
+                            }
+                        }
+                    }
+                },
+                "security": [
+                    {
+                        "OAuth2PasswordBearer": []
+                    }
+                ]
+            }
+        },
+        "/v1/proposals/{proposal_id}": {
+            "get": {
+                "tags": [
+                    "proposals"
+                ],
+                "summary": "Read Proposal",
+                "operationId": "read_proposal_v1_proposals__proposal_id__get",
+                "parameters": [
+                    {
+                        "required": true,
+                        "schema": {
+                            "type": "string",
+                            "format": "uuid",
+                            "title": "Proposal Id"
+                        },
+                        "name": "proposal_id",
+                        "in": "path"
+                    },
+                    {
+                        "required": false,
+                        "schema": {
+                            "type": "string",
+                            "title": "X-Api-Key"
+                        },
+                        "name": "X-API-KEY",
+                        "in": "header"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Successful Response",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/ProposalResponseSchema"
+                                }
+                            }
+                        }
+                    },
+                    "422": {
+                        "description": "Validation Error",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/HTTPValidationError"
+                                }
+                            }
+                        }
+                    }
+                },
+                "security": [
+                    {
+                        "OAuth2PasswordBearer": []
+                    }
+                ]
+            },
+            "delete": {
+                "tags": [
+                    "proposals"
+                ],
+                "summary": "Delete Proposal",
+                "operationId": "delete_proposal_v1_proposals__proposal_id__delete",
+                "parameters": [
+                    {
+                        "required": true,
+                        "schema": {
+                            "type": "string",
+                            "format": "uuid",
+                            "title": "Proposal Id"
+                        },
+                        "name": "proposal_id",
+                        "in": "path"
+                    },
+                    {
+                        "required": false,
+                        "schema": {
+                            "type": "string",
+                            "title": "X-Api-Key"
+                        },
+                        "name": "X-API-KEY",
+                        "in": "header"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Successful Response",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/src__agent_market__schemas__proposal__MessageResponse"
+                                }
+                            }
+                        }
+                    },
+                    "422": {
+                        "description": "Validation Error",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/HTTPValidationError"
+                                }
+                            }
+                        }
+                    }
+                },
+                "security": [
+                    {
+                        "OAuth2PasswordBearer": []
+                    }
+                ]
+            }
+        },
+        "/v1/chat/{instance_id}": {
+            "get": {
+                "tags": [
+                    "chat"
+                ],
+                "summary": "Get Conversation",
+                "operationId": "get_conversation_v1_chat__instance_id__get",
+                "parameters": [
+                    {
+                        "required": true,
+                        "schema": {
+                            "type": "string",
+                            "format": "uuid",
+                            "title": "Instance Id"
+                        },
+                        "name": "instance_id",
+                        "in": "path"
+                    },
+                    {
+                        "required": false,
+                        "schema": {
+                            "type": "string",
+                            "format": "uuid",
+                            "title": "Provider Id"
+                        },
+                        "name": "provider_id",
+                        "in": "query"
+                    },
+                    {
+                        "required": false,
+                        "schema": {
+                            "type": "string",
+                            "title": "X-Api-Key"
+                        },
+                        "name": "X-API-KEY",
+                        "in": "header"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Successful Response",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "items": {
+                                        "$ref": "#/components/schemas/MessageResponseSchema"
+                                    },
+                                    "type": "array",
+                                    "title": "Response Get Conversation V1 Chat  Instance Id  Get"
+                                }
+                            }
+                        }
+                    },
+                    "422": {
+                        "description": "Validation Error",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/HTTPValidationError"
+                                }
+                            }
+                        }
+                    }
+                },
+                "security": [
+                    {
+                        "OAuth2PasswordBearer": []
+                    }
+                ]
+            }
+        },
+        "/v1/chat/send-message/{instance_id}": {
+            "post": {
+                "tags": [
+                    "chat"
+                ],
+                "summary": "Send Message",
+                "operationId": "send_message_v1_chat_send_message__instance_id__post",
+                "parameters": [
+                    {
+                        "required": true,
+                        "schema": {
+                            "type": "string",
+                            "format": "uuid",
+                            "title": "Instance Id"
+                        },
+                        "name": "instance_id",
+                        "in": "path"
+                    },
+                    {
+                        "required": false,
+                        "schema": {
+                            "type": "string",
+                            "format": "uuid",
+                            "title": "Provider Id"
+                        },
+                        "name": "provider_id",
+                        "in": "query"
+                    },
+                    {
+                        "required": false,
+                        "schema": {
+                            "type": "string",
+                            "title": "X-Api-Key"
+                        },
+                        "name": "X-API-KEY",
+                        "in": "header"
+                    }
+                ],
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/ConversationBaseSchema"
+                            }
+                        }
+                    },
+                    "required": true
+                },
+                "responses": {
+                    "200": {
+                        "description": "Successful Response",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "object",
+                                    "title": "Response Send Message V1 Chat Send Message  Instance Id  Post"
+                                }
+                            }
+                        }
+                    },
+                    "422": {
+                        "description": "Validation Error",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/HTTPValidationError"
+                                }
+                            }
+                        }
+                    }
+                },
+                "security": [
+                    {
+                        "OAuth2PasswordBearer": []
+                    }
+                ]
+            }
+        },
+        "/v1/github/repositories": {
+            "get": {
+                "tags": [
+                    "github"
+                ],
+                "summary": "List Repositories",
+                "operationId": "list_repositories_v1_github_repositories_get",
+                "parameters": [
+                    {
+                        "required": false,
+                        "schema": {
+                            "type": "string",
+                            "title": "X-Api-Key"
+                        },
+                        "name": "X-API-KEY",
+                        "in": "header"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Successful Response",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "items": {
+                                        "$ref": "#/components/schemas/TrackedRepository"
+                                    },
+                                    "type": "array",
+                                    "title": "Response List Repositories V1 Github Repositories Get"
+                                }
+                            }
+                        }
+                    },
+                    "422": {
+                        "description": "Validation Error",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/HTTPValidationError"
+                                }
+                            }
+                        }
+                    }
+                },
+                "security": [
+                    {
+                        "OAuth2PasswordBearer": []
+                    }
+                ]
+            },
+            "post": {
+                "tags": [
+                    "github"
+                ],
+                "summary": "Add Repository Endpoint",
+                "operationId": "add_repository_endpoint_v1_github_repositories_post",
+                "parameters": [
+                    {
+                        "required": false,
+                        "schema": {
+                            "type": "string",
+                            "title": "X-Api-Key"
+                        },
+                        "name": "X-API-KEY",
+                        "in": "header"
+                    }
+                ],
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/AddRepoSchema"
+                            }
+                        }
+                    },
+                    "required": true
+                },
+                "responses": {
+                    "200": {
+                        "description": "Successful Response",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/TrackedRepository"
+                                }
+                            }
+                        }
+                    },
+                    "422": {
+                        "description": "Validation Error",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/HTTPValidationError"
+                                }
+                            }
+                        }
+                    }
+                },
+                "security": [
+                    {
+                        "OAuth2PasswordBearer": []
+                    }
+                ]
+            },
+            "delete": {
+                "tags": [
+                    "github"
+                ],
+                "summary": "Remove User Repository",
+                "operationId": "remove_user_repository_v1_github_repositories_delete",
+                "parameters": [
+                    {
+                        "required": true,
+                        "schema": {
+                            "type": "string",
+                            "title": "Repo Url"
+                        },
+                        "name": "repo_url",
+                        "in": "query"
+                    },
+                    {
+                        "required": false,
+                        "schema": {
+                            "type": "string",
+                            "title": "X-Api-Key"
+                        },
+                        "name": "X-API-KEY",
+                        "in": "header"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Successful Response",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "object",
+                                    "title": "Response Remove User Repository V1 Github Repositories Delete"
+                                }
+                            }
+                        }
+                    },
+                    "422": {
+                        "description": "Validation Error",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/HTTPValidationError"
+                                }
+                            }
+                        }
+                    }
+                },
+                "security": [
+                    {
+                        "OAuth2PasswordBearer": []
+                    }
+                ]
+            }
+        },
+        "/v1/github/repositories/issues": {
+            "get": {
+                "tags": [
+                    "github"
+                ],
+                "summary": "Get Repository Issues Endpoint",
+                "operationId": "get_repository_issues_endpoint_v1_github_repositories_issues_get",
+                "parameters": [
+                    {
+                        "required": true,
+                        "schema": {
+                            "type": "string",
+                            "title": "Repo Url"
+                        },
+                        "name": "repo_url",
+                        "in": "query"
+                    },
+                    {
+                        "required": false,
+                        "schema": {
+                            "type": "string",
+                            "title": "X-Api-Key"
+                        },
+                        "name": "X-API-KEY",
+                        "in": "header"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Successful Response",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "items": {
+                                        "$ref": "#/components/schemas/TrackedIssue"
+                                    },
+                                    "type": "array",
+                                    "title": "Response Get Repository Issues Endpoint V1 Github Repositories Issues Get"
+                                }
+                            }
+                        }
+                    },
+                    "422": {
+                        "description": "Validation Error",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/HTTPValidationError"
+                                }
+                            }
+                        }
+                    }
+                },
+                "security": [
+                    {
+                        "OAuth2PasswordBearer": []
+                    }
+                ]
+            }
+        },
+        "/v1/github/repositories/issues/block": {
+            "post": {
+                "tags": [
+                    "github"
+                ],
+                "summary": "Block Repository Issue",
+                "operationId": "block_repository_issue_v1_github_repositories_issues_block_post",
+                "parameters": [
+                    {
+                        "required": true,
+                        "schema": {
+                            "type": "string",
+                            "title": "Repo Url"
+                        },
+                        "name": "repo_url",
+                        "in": "query"
+                    },
+                    {
+                        "required": true,
+                        "schema": {
+                            "type": "integer",
+                            "title": "Issue Number"
+                        },
+                        "name": "issue_number",
+                        "in": "query"
+                    },
+                    {
+                        "required": false,
+                        "schema": {
+                            "type": "string",
+                            "title": "X-Api-Key"
+                        },
+                        "name": "X-API-KEY",
+                        "in": "header"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Successful Response",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "object",
+                                    "title": "Response Block Repository Issue V1 Github Repositories Issues Block Post"
+                                }
+                            }
+                        }
+                    },
+                    "422": {
+                        "description": "Validation Error",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/HTTPValidationError"
+                                }
+                            }
+                        }
+                    }
+                },
+                "security": [
+                    {
+                        "OAuth2PasswordBearer": []
+                    }
+                ]
+            }
+        },
+        "/minimal-providers": {
+            "post": {
+                "tags": [
+                    "minimal-providers"
+                ],
+                "summary": "Create Minimal Provider",
+                "operationId": "create_minimal_provider_minimal_providers_post",
+                "parameters": [
+                    {
+                        "required": false,
+                        "schema": {
+                            "type": "string",
+                            "title": "X-Api-Key"
+                        },
+                        "name": "X-API-KEY",
+                        "in": "header"
+                    }
+                ],
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/MinimalProviderCreate"
+                            }
+                        }
+                    },
+                    "required": true
+                },
+                "responses": {
+                    "200": {
+                        "description": "Successful Response",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/MinimalProviderResponse"
+                                }
+                            }
+                        }
+                    },
+                    "422": {
+                        "description": "Validation Error",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/HTTPValidationError"
+                                }
+                            }
+                        }
+                    }
+                },
+                "security": [
+                    {
+                        "OAuth2PasswordBearer": []
+                    }
+                ]
+            }
+        },
+        "/minimal-providers/{minimal_provider_name}": {
+            "get": {
+                "tags": [
+                    "minimal-providers"
+                ],
+                "summary": "Get Minimal Provider",
+                "operationId": "get_minimal_provider_minimal_providers__minimal_provider_name__get",
+                "parameters": [
+                    {
+                        "required": true,
+                        "schema": {
+                            "type": "string",
+                            "title": "Minimal Provider Name"
+                        },
+                        "name": "minimal_provider_name",
+                        "in": "path"
+                    },
+                    {
+                        "required": false,
+                        "schema": {
+                            "type": "string",
+                            "title": "X-Api-Key"
+                        },
+                        "name": "X-API-KEY",
+                        "in": "header"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Successful Response",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/MinimalProviderResponse"
+                                }
+                            }
+                        }
+                    },
+                    "422": {
+                        "description": "Validation Error",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/HTTPValidationError"
+                                }
+                            }
+                        }
+                    }
+                },
+                "security": [
+                    {
+                        "OAuth2PasswordBearer": []
+                    }
+                ]
+            },
+            "patch": {
+                "tags": [
+                    "minimal-providers"
+                ],
+                "summary": "Update Minimal Provider Status",
+                "operationId": "update_minimal_provider_status_minimal_providers__minimal_provider_name__patch",
+                "parameters": [
+                    {
+                        "required": true,
+                        "schema": {
+                            "type": "string",
+                            "title": "Minimal Provider Name"
+                        },
+                        "name": "minimal_provider_name",
+                        "in": "path"
+                    },
+                    {
+                        "required": false,
+                        "schema": {
+                            "type": "string",
+                            "title": "X-Api-Key"
+                        },
+                        "name": "X-API-KEY",
+                        "in": "header"
+                    }
+                ],
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/MinimalProviderUpdate"
+                            }
+                        }
+                    },
+                    "required": true
+                },
+                "responses": {
+                    "200": {
+                        "description": "Successful Response",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/MinimalProviderResponse"
+                                }
+                            }
+                        }
+                    },
+                    "422": {
+                        "description": "Validation Error",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/HTTPValidationError"
+                                }
+                            }
+                        }
+                    }
+                },
+                "security": [
+                    {
+                        "OAuth2PasswordBearer": []
+                    }
+                ]
+            }
+        },
+        "/v1/auth/register": {
+            "post": {
+                "tags": [
+                    "auth"
+                ],
+                "summary": "Register User",
+                "operationId": "register_user_v1_auth_register_post",
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/UserCreateSchema"
+                            }
+                        }
+                    },
+                    "required": true
+                },
+                "responses": {
+                    "201": {
+                        "description": "Successful Response",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/UserResponseSchema"
+                                }
+                            }
+                        }
+                    },
+                    "422": {
+                        "description": "Validation Error",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/HTTPValidationError"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/v1/auth/login": {
+            "post": {
+                "tags": [
+                    "auth"
+                ],
+                "summary": "Login For Access Token",
+                "operationId": "login_for_access_token_v1_auth_login_post",
+                "requestBody": {
+                    "content": {
+                        "application/x-www-form-urlencoded": {
+                            "schema": {
+                                "$ref": "#/components/schemas/Body_login_for_access_token_v1_auth_login_post"
+                            }
+                        }
+                    },
+                    "required": true
+                },
+                "responses": {
+                    "200": {
+                        "description": "Successful Response",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/TokenSchema"
+                                }
+                            }
+                        }
+                    },
+                    "422": {
+                        "description": "Validation Error",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/HTTPValidationError"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/v1/auth/change-password": {
+            "put": {
+                "tags": [
+                    "auth"
+                ],
+                "summary": "Change Password",
+                "operationId": "change_password_v1_auth_change_password_put",
+                "parameters": [
+                    {
+                        "required": false,
+                        "schema": {
+                            "type": "string",
+                            "title": "X-Api-Key"
+                        },
+                        "name": "X-API-KEY",
+                        "in": "header"
+                    }
+                ],
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/PasswordChangeSchema"
+                            }
+                        }
+                    },
+                    "required": true
+                },
+                "responses": {
+                    "200": {
+                        "description": "Successful Response",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/PasswordUpdateSchema"
+                                }
+                            }
+                        }
+                    },
+                    "422": {
+                        "description": "Validation Error",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/HTTPValidationError"
+                                }
+                            }
+                        }
+                    }
+                },
+                "security": [
+                    {
+                        "OAuth2PasswordBearer": []
+                    }
+                ]
+            }
+        },
+        "/v1/auth/create-api-key": {
+            "post": {
+                "tags": [
+                    "auth"
+                ],
+                "summary": "Create Api Key",
+                "operationId": "create_api_key_v1_auth_create_api_key_post",
+                "parameters": [
+                    {
+                        "required": true,
+                        "schema": {
+                            "type": "string",
+                            "minLength": 1,
+                            "title": "Name"
+                        },
+                        "name": "name",
+                        "in": "query"
+                    },
+                    {
+                        "required": false,
+                        "schema": {
+                            "type": "boolean",
+                            "title": "Is Live",
+                            "default": true
+                        },
+                        "name": "is_live",
+                        "in": "query"
+                    },
+                    {
+                        "required": false,
+                        "schema": {
+                            "type": "string",
+                            "title": "X-Api-Key"
+                        },
+                        "name": "X-API-KEY",
+                        "in": "header"
+                    }
+                ],
+                "responses": {
+                    "201": {
+                        "description": "Successful Response",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/APIKeyCreationResponseSchema"
+                                }
+                            }
+                        }
+                    },
+                    "422": {
+                        "description": "Validation Error",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/HTTPValidationError"
+                                }
+                            }
+                        }
+                    }
+                },
+                "security": [
+                    {
+                        "OAuth2PasswordBearer": []
+                    }
+                ]
+            }
+        },
+        "/v1/auth/delete-api-key": {
+            "delete": {
+                "tags": [
+                    "auth"
+                ],
+                "summary": "Delete Api Key By Name",
+                "operationId": "delete_api_key_by_name_v1_auth_delete_api_key_delete",
+                "parameters": [
+                    {
+                        "required": true,
+                        "schema": {
+                            "type": "string",
+                            "minLength": 1,
+                            "title": "Name"
+                        },
+                        "name": "name",
+                        "in": "query"
+                    },
+                    {
+                        "required": false,
+                        "schema": {
+                            "type": "string",
+                            "title": "X-Api-Key"
+                        },
+                        "name": "X-API-KEY",
+                        "in": "header"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Successful Response",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/SuccessAPIKeyDeleteResponseSchema"
+                                }
+                            }
+                        }
+                    },
+                    "422": {
+                        "description": "Validation Error",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/HTTPValidationError"
+                                }
+                            }
+                        }
+                    }
+                },
+                "security": [
+                    {
+                        "OAuth2PasswordBearer": []
+                    }
+                ]
+            }
+        },
+        "/v1/auth/list-api-keys": {
+            "get": {
+                "tags": [
+                    "auth"
+                ],
+                "summary": "List Api Keys",
+                "operationId": "list_api_keys_v1_auth_list_api_keys_get",
+                "parameters": [
+                    {
+                        "required": false,
+                        "schema": {
+                            "type": "string",
+                            "title": "X-Api-Key"
+                        },
+                        "name": "X-API-KEY",
+                        "in": "header"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Successful Response",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "items": {
+                                        "$ref": "#/components/schemas/APIKeyNamesResponseSchema"
+                                    },
+                                    "type": "array",
+                                    "title": "Response List Api Keys V1 Auth List Api Keys Get"
+                                }
+                            }
+                        }
+                    },
+                    "422": {
+                        "description": "Validation Error",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/HTTPValidationError"
+                                }
+                            }
+                        }
+                    }
+                },
+                "security": [
+                    {
+                        "OAuth2PasswordBearer": []
+                    }
+                ]
+            }
+        },
+        "/v1/auth/disable-api-key": {
+            "put": {
+                "tags": [
+                    "auth"
+                ],
+                "summary": "Disable Api Key",
+                "operationId": "disable_api_key_v1_auth_disable_api_key_put",
+                "parameters": [
+                    {
+                        "required": true,
+                        "schema": {
+                            "type": "string",
+                            "minLength": 1,
+                            "title": "Name"
+                        },
+                        "name": "name",
+                        "in": "query"
+                    },
+                    {
+                        "required": false,
+                        "schema": {
+                            "type": "string",
+                            "title": "X-Api-Key"
+                        },
+                        "name": "X-API-KEY",
+                        "in": "header"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Successful Response",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/APIKeyDisableResponseSchema"
+                                }
+                            }
+                        }
+                    },
+                    "422": {
+                        "description": "Validation Error",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/HTTPValidationError"
+                                }
+                            }
+                        }
+                    }
+                },
+                "security": [
+                    {
+                        "OAuth2PasswordBearer": []
+                    }
+                ]
+            }
+        },
+        "/v1/auth/enable-api-key": {
+            "put": {
+                "tags": [
+                    "auth"
+                ],
+                "summary": "Enable Api Key",
+                "operationId": "enable_api_key_v1_auth_enable_api_key_put",
+                "parameters": [
+                    {
+                        "required": true,
+                        "schema": {
+                            "type": "string",
+                            "minLength": 1,
+                            "title": "Name"
+                        },
+                        "name": "name",
+                        "in": "query"
+                    },
+                    {
+                        "required": false,
+                        "schema": {
+                            "type": "string",
+                            "title": "X-Api-Key"
+                        },
+                        "name": "X-API-KEY",
+                        "in": "header"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Successful Response",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/APIKeyEnableResponseSchema"
+                                }
+                            }
+                        }
+                    },
+                    "422": {
+                        "description": "Validation Error",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/HTTPValidationError"
+                                }
+                            }
+                        }
+                    }
+                },
+                "security": [
+                    {
+                        "OAuth2PasswordBearer": []
+                    }
+                ]
+            }
+        },
+        "/v1/auth/github/callback/token": {
+            "get": {
+                "tags": [
+                    "auth"
+                ],
+                "summary": "Github Callback Token",
+                "operationId": "github_callback_token_v1_auth_github_callback_token_get",
+                "responses": {
+                    "200": {
+                        "description": "Successful Response",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/TokenSchema"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/v1/auth/github/callback/chat": {
+            "get": {
+                "tags": [
+                    "auth"
+                ],
+                "summary": "Github Callback Chat",
+                "operationId": "github_callback_chat_v1_auth_github_callback_chat_get",
+                "responses": {
+                    "200": {
+                        "description": "Successful Response",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/TokenSchema"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/v1/auth/github/callback/spec2app": {
+            "get": {
+                "tags": [
+                    "auth"
+                ],
+                "summary": "Github Callback Spec2App",
+                "operationId": "github_callback_spec2app_v1_auth_github_callback_spec2app_get",
+                "responses": {
+                    "200": {
+                        "description": "Successful Response",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/TokenSchema"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/v1/auth/github/callback/trade": {
+            "get": {
+                "tags": [
+                    "auth"
+                ],
+                "summary": "Github Callback Trade",
+                "operationId": "github_callback_trade_v1_auth_github_callback_trade_get",
+                "responses": {
+                    "200": {
+                        "description": "Successful Response",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/TokenSchema"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/v1/auth/github/callback/spec2bot": {
+            "get": {
+                "tags": [
+                    "auth"
+                ],
+                "summary": "Github Callback Spec2Bot",
+                "operationId": "github_callback_spec2bot_v1_auth_github_callback_spec2bot_get",
+                "responses": {
+                    "200": {
+                        "description": "Successful Response",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/TokenSchema"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/v1/auth/set-github-username": {
+            "put": {
+                "tags": [
+                    "auth"
+                ],
+                "summary": "Set Github Username",
+                "operationId": "set_github_username_v1_auth_set_github_username_put",
+                "parameters": [
+                    {
+                        "required": true,
+                        "schema": {
+                            "type": "string",
+                            "minLength": 1,
+                            "title": "Github Username"
+                        },
+                        "name": "github_username",
+                        "in": "query"
+                    },
+                    {
+                        "required": false,
+                        "schema": {
+                            "type": "string",
+                            "title": "X-Api-Key"
+                        },
+                        "name": "X-API-KEY",
+                        "in": "header"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Successful Response",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/UserResponseSchema"
+                                }
+                            }
+                        }
+                    },
+                    "422": {
+                        "description": "Validation Error",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/HTTPValidationError"
+                                }
+                            }
+                        }
+                    }
+                },
+                "security": [
+                    {
+                        "OAuth2PasswordBearer": []
+                    }
+                ]
+            }
+        },
+        "/v1/provider/{provider_id}": {
+            "get": {
+                "tags": [
+                    "provider"
+                ],
+                "summary": "Get Provider By Id",
+                "operationId": "get_provider_by_id_v1_provider__provider_id__get",
+                "security": [
+                    {
+                        "OAuth2PasswordBearer": []
+                    }
+                ],
+                "parameters": [
+                    {
+                        "name": "provider_id",
+                        "in": "path",
+                        "required": true,
+                        "schema": {
+                            "title": "Provider Id",
+                            "description": "Provider id",
+                            "examples": {
+                                "providerexample": {
+                                    "summary": "Example UUID 1",
+                                    "description": "A simple UUID example",
+                                    "value": "123e4567-e89b-12d3-a456-426614174000"
+                                }
+                            },
+                            "type": "string",
+                            "format": "uuid"
+                        },
+                        "description": "Provider id"
+                    },
+                    {
+                        "name": "X-API-KEY",
+                        "in": "header",
+                        "required": false,
+                        "schema": {
+                            "title": "X-Api-Key",
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Successful Response",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/ProviderResponseSchema"
+                                }
+                            }
+                        }
+                    },
+                    "422": {
+                        "description": "Validation Error",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/HTTPValidationError"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/v1/provider/by-user-id/{user_id}": {
+            "get": {
+                "tags": [
+                    "provider"
+                ],
+                "summary": "Get Provider By User Id",
+                "operationId": "get_provider_by_user_id_v1_provider_by_user_id__user_id__get",
+                "security": [
+                    {
+                        "OAuth2PasswordBearer": []
+                    }
+                ],
+                "parameters": [
+                    {
+                        "name": "user_id",
+                        "in": "path",
+                        "required": true,
+                        "schema": {
+                            "title": "User Id",
+                            "description": "User id",
+                            "examples": {
+                                "userex": {
+                                    "summary": "Example UUID 1",
+                                    "description": "A simple UUID example",
+                                    "value": "123e4567-e89b-12d3-a456-426614174000"
+                                }
+                            },
+                            "type": "string",
+                            "format": "uuid"
+                        },
+                        "description": "User id"
+                    },
+                    {
+                        "name": "X-API-KEY",
+                        "in": "header",
+                        "required": false,
+                        "schema": {
+                            "title": "X-Api-Key",
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Successful Response",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/ProviderResponseSchema"
+                                }
+                            }
+                        }
+                    },
+                    "422": {
+                        "description": "Validation Error",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/HTTPValidationError"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/v1/requester/get-acl-mode": {
+            "get": {
+                "tags": [
+                    "requester"
+                ],
+                "summary": "Get Acl Mode",
+                "operationId": "get_acl_mode_v1_requester_get_acl_mode_get",
+                "parameters": [
+                    {
+                        "required": false,
+                        "schema": {
+                            "type": "string",
+                            "title": "X-Api-Key"
+                        },
+                        "name": "X-API-KEY",
+                        "in": "header"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Successful Response",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/ACLModeResponse"
+                                }
+                            }
+                        }
+                    },
+                    "422": {
+                        "description": "Validation Error",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/HTTPValidationError"
+                                }
+                            }
+                        }
+                    }
+                },
+                "security": [
+                    {
+                        "OAuth2PasswordBearer": []
+                    }
+                ]
+            }
+        },
+        "/v1/requester/set-acl-mode": {
+            "patch": {
+                "tags": [
+                    "requester"
+                ],
+                "summary": "Set Acl Mode",
+                "operationId": "set_acl_mode_v1_requester_set_acl_mode_patch",
+                "parameters": [
+                    {
+                        "required": false,
+                        "schema": {
+                            "type": "string",
+                            "title": "X-Api-Key"
+                        },
+                        "name": "X-API-KEY",
+                        "in": "header"
+                    }
+                ],
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/ACLModeInput"
+                            }
+                        }
+                    },
+                    "required": true
+                },
+                "responses": {
+                    "200": {
+                        "description": "Successful Response",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/src__market_router__schemas__requester__MessageResponse"
+                                }
+                            }
+                        }
+                    },
+                    "422": {
+                        "description": "Validation Error",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/HTTPValidationError"
+                                }
+                            }
+                        }
+                    }
+                },
+                "security": [
+                    {
+                        "OAuth2PasswordBearer": []
+                    }
+                ]
+            }
+        },
+        "/v1/requester/get-acl-users": {
+            "get": {
+                "tags": [
+                    "requester"
+                ],
+                "summary": "Get Acl Users",
+                "operationId": "get_acl_users_v1_requester_get_acl_users_get",
+                "parameters": [
+                    {
+                        "required": false,
+                        "schema": {
+                            "type": "string",
+                            "title": "X-Api-Key"
+                        },
+                        "name": "X-API-KEY",
+                        "in": "header"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Successful Response",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/ACLUsersResponse"
+                                }
+                            }
+                        }
+                    },
+                    "422": {
+                        "description": "Validation Error",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/HTTPValidationError"
+                                }
+                            }
+                        }
+                    }
+                },
+                "security": [
+                    {
+                        "OAuth2PasswordBearer": []
+                    }
+                ]
+            }
+        },
+        "/v1/requester/acl-add/{provider_id}": {
+            "post": {
+                "tags": [
+                    "requester"
+                ],
+                "summary": "Acl Add",
+                "operationId": "acl_add_v1_requester_acl_add__provider_id__post",
+                "parameters": [
+                    {
+                        "required": true,
+                        "schema": {
+                            "type": "string",
+                            "format": "uuid",
+                            "title": "Provider Id"
+                        },
+                        "name": "provider_id",
+                        "in": "path"
+                    },
+                    {
+                        "required": false,
+                        "schema": {
+                            "type": "string",
+                            "title": "X-Api-Key"
+                        },
+                        "name": "X-API-KEY",
+                        "in": "header"
+                    }
+                ],
+                "responses": {
+                    "201": {
+                        "description": "Successful Response",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/src__market_router__schemas__requester__MessageResponse"
+                                }
+                            }
+                        }
+                    },
+                    "422": {
+                        "description": "Validation Error",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/HTTPValidationError"
+                                }
+                            }
+                        }
+                    }
+                },
+                "security": [
+                    {
+                        "OAuth2PasswordBearer": []
+                    }
+                ]
+            }
+        },
+        "/v1/requester/acl-remove/{provider_id}": {
+            "delete": {
+                "tags": [
+                    "requester"
+                ],
+                "summary": "Acl Remove",
+                "operationId": "acl_remove_v1_requester_acl_remove__provider_id__delete",
+                "parameters": [
+                    {
+                        "required": true,
+                        "schema": {
+                            "type": "string",
+                            "format": "uuid",
+                            "title": "Provider Id"
+                        },
+                        "name": "provider_id",
+                        "in": "path"
+                    },
+                    {
+                        "required": false,
+                        "schema": {
+                            "type": "string",
+                            "title": "X-Api-Key"
+                        },
+                        "name": "X-API-KEY",
+                        "in": "header"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Successful Response",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/src__market_router__schemas__requester__MessageResponse"
+                                }
+                            }
+                        }
+                    },
+                    "422": {
+                        "description": "Validation Error",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/HTTPValidationError"
+                                }
+                            }
+                        }
+                    }
+                },
+                "security": [
+                    {
+                        "OAuth2PasswordBearer": []
+                    }
+                ]
+            }
+        },
+        "/v1/payment/create-payment-account": {
+            "post": {
+                "tags": [
+                    "payment"
+                ],
+                "summary": "Create Payment Account",
+                "operationId": "create_payment_account_v1_payment_create_payment_account_post",
+                "parameters": [
+                    {
+                        "required": false,
+                        "schema": {
+                            "type": "string",
+                            "title": "X-Api-Key"
+                        },
+                        "name": "X-API-KEY",
+                        "in": "header"
+                    }
+                ],
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/CreateAccount"
+                            }
+                        }
+                    },
+                    "required": true
+                },
+                "responses": {
+                    "200": {
+                        "description": "Successful Response",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/URLSchema"
+                                }
+                            }
+                        }
+                    },
+                    "422": {
+                        "description": "Validation Error",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/HTTPValidationError"
+                                }
+                            }
+                        }
+                    }
+                },
+                "security": [
+                    {
+                        "OAuth2PasswordBearer": []
+                    }
+                ]
+            }
+        },
+        "/v1/payment/deposit": {
+            "post": {
+                "tags": [
+                    "payment"
+                ],
+                "summary": "Deposit",
+                "operationId": "deposit_v1_payment_deposit_post",
+                "parameters": [
+                    {
+                        "required": false,
+                        "schema": {
+                            "type": "string",
+                            "title": "X-Api-Key"
+                        },
+                        "name": "X-API-KEY",
+                        "in": "header"
+                    }
+                ],
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/DepositSchema"
+                            }
+                        }
+                    },
+                    "required": true
+                },
+                "responses": {
+                    "200": {
+                        "description": "Successful Response",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/URLSchema"
+                                }
+                            }
+                        }
+                    },
+                    "422": {
+                        "description": "Validation Error",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/HTTPValidationError"
+                                }
+                            }
+                        }
+                    }
+                },
+                "security": [
+                    {
+                        "OAuth2PasswordBearer": []
+                    }
+                ]
+            }
+        },
+        "/v1/payment/balance": {
+            "get": {
+                "tags": [
+                    "payment"
+                ],
+                "summary": "Get Wallet Balance",
+                "operationId": "get_wallet_balance_v1_payment_balance_get",
+                "parameters": [
+                    {
+                        "required": false,
+                        "schema": {
+                            "type": "string",
+                            "title": "X-Api-Key"
+                        },
+                        "name": "X-API-KEY",
+                        "in": "header"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Successful Response",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/WalletBalanceResponseSchema"
+                                }
+                            }
+                        }
+                    },
+                    "422": {
+                        "description": "Validation Error",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/HTTPValidationError"
+                                }
+                            }
+                        }
+                    }
+                },
+                "security": [
+                    {
+                        "OAuth2PasswordBearer": []
+                    }
+                ]
+            }
+        },
+        "/v1/payment/withdraw": {
+            "post": {
+                "tags": [
+                    "payment"
+                ],
+                "summary": "Withdraw",
+                "operationId": "withdraw_v1_payment_withdraw_post",
+                "parameters": [
+                    {
+                        "required": false,
+                        "schema": {
+                            "type": "string",
+                            "title": "X-Api-Key"
+                        },
+                        "name": "X-API-KEY",
+                        "in": "header"
+                    }
+                ],
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/WithdrawSchema"
+                            }
+                        }
+                    },
+                    "required": true
+                },
+                "responses": {
+                    "200": {
+                        "description": "Successful Response",
+                        "content": {
+                            "application/json": {
+                                "schema": {}
+                            }
+                        }
+                    },
+                    "422": {
+                        "description": "Validation Error",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/HTTPValidationError"
+                                }
+                            }
+                        }
+                    }
+                },
+                "security": [
+                    {
+                        "OAuth2PasswordBearer": []
+                    }
+                ]
+            }
+        }
+    },
+    "components": {
+        "schemas": {
+            "ACLModeInput": {
+                "properties": {
+                    "acl_mode_blocklist": {
+                        "type": "boolean",
+                        "title": "Acl Mode Blocklist",
+                        "example": false
+                    }
+                },
+                "type": "object",
+                "required": [
+                    "acl_mode_blocklist"
+                ],
+                "title": "ACLModeInput"
+            },
+            "ACLModeResponse": {
+                "properties": {
+                    "acl_mode_blocklist": {
+                        "type": "boolean",
+                        "title": "Acl Mode Blocklist"
+                    }
+                },
+                "type": "object",
+                "required": [
+                    "acl_mode_blocklist"
+                ],
+                "title": "ACLModeResponse"
+            },
+            "ACLUsersResponse": {
+                "properties": {
+                    "acl_users": {
+                        "items": {
+                            "type": "string",
+                            "format": "uuid"
+                        },
+                        "type": "array",
+                        "title": "Acl Users"
+                    }
+                },
+                "type": "object",
+                "required": [
+                    "acl_users"
+                ],
+                "title": "ACLUsersResponse"
+            },
+            "APIKeyCreationResponseSchema": {
+                "properties": {
+                    "api_key": {
+                        "type": "string",
+                        "title": "Api Key"
+                    },
+                    "name": {
+                        "type": "string",
+                        "title": "Name"
+                    },
+                    "is_live": {
+                        "type": "boolean",
+                        "title": "Is Live"
+                    }
+                },
+                "type": "object",
+                "required": [
+                    "api_key",
+                    "name",
+                    "is_live"
+                ],
+                "title": "APIKeyCreationResponseSchema"
+            },
+            "APIKeyDisableResponseSchema": {
+                "properties": {
+                    "name": {
+                        "type": "string",
+                        "title": "Name"
+                    },
+                    "is_live": {
+                        "type": "boolean",
+                        "title": "Is Live"
+                    }
+                },
+                "type": "object",
+                "required": [
+                    "name",
+                    "is_live"
+                ],
+                "title": "APIKeyDisableResponseSchema"
+            },
+            "APIKeyEnableResponseSchema": {
+                "properties": {
+                    "name": {
+                        "type": "string",
+                        "title": "Name"
+                    },
+                    "is_live": {
+                        "type": "boolean",
+                        "title": "Is Live"
+                    }
+                },
+                "type": "object",
+                "required": [
+                    "name",
+                    "is_live"
+                ],
+                "title": "APIKeyEnableResponseSchema"
+            },
+            "APIKeyNamesResponseSchema": {
+                "properties": {
+                    "name": {
+                        "type": "string",
+                        "title": "Name"
+                    },
+                    "is_live": {
+                        "type": "boolean",
+                        "title": "Is Live"
+                    }
+                },
+                "type": "object",
+                "required": [
+                    "name",
+                    "is_live"
+                ],
+                "title": "APIKeyNamesResponseSchema"
+            },
+            "AddRepoSchema": {
+                "properties": {
+                    "repo_url": {
+                        "type": "string",
+                        "title": "Repo Url",
+                        "description": "URL of the GitHub repository to track"
+                    },
+                    "default_reward": {
+                        "type": "number",
+                        "exclusiveMinimum": 0.0,
+                        "title": "Default Reward",
+                        "description": "Default reward must be greater than 0"
+                    },
+                    "representative_agent": {
+                        "type": "boolean",
+                        "title": "Representative Agent",
+                        "description": "Whether to use a representative agent for this repository",
+                        "default": false
+                    },
+                    "max_reward_for_estimation": {
+                        "type": "number",
+                        "title": "Max Reward For Estimation",
+                        "description": "Maximum reward amount for estimation tasks"
+                    },
+                    "allowed_providers": {
+                        "items": {
+                            "type": "string",
+                            "format": "uuid"
+                        },
+                        "type": "array",
+                        "title": "Allowed Providers",
+                        "description": "List of provider IDs that are allowed to work on this repository"
+                    }
+                },
+                "type": "object",
+                "required": [
+                    "repo_url",
+                    "default_reward"
+                ],
+                "title": "AddRepoSchema"
+            },
+            "Body_login_for_access_token_v1_auth_login_post": {
+                "properties": {
+                    "grant_type": {
+                        "type": "string",
+                        "pattern": "password",
+                        "title": "Grant Type"
+                    },
+                    "username": {
+                        "type": "string",
+                        "title": "Username"
+                    },
+                    "password": {
+                        "type": "string",
+                        "title": "Password"
+                    },
+                    "scope": {
+                        "type": "string",
+                        "title": "Scope",
+                        "default": ""
+                    },
+                    "client_id": {
+                        "type": "string",
+                        "title": "Client Id"
+                    },
+                    "client_secret": {
+                        "type": "string",
+                        "title": "Client Secret"
+                    }
+                },
+                "type": "object",
+                "required": [
+                    "username",
+                    "password"
+                ],
+                "title": "Body_login_for_access_token_v1_auth_login_post"
+            },
+            "ConversationBaseSchema": {
+                "properties": {
+                    "message": {
+                        "type": "string",
+                        "title": "Message"
+                    }
+                },
+                "type": "object",
+                "required": [
+                    "message"
+                ],
+                "title": "ConversationBaseSchema"
+            },
+            "CreateAccount": {
+                "properties": {
+                    "country": {
+                        "type": "string",
+                        "title": "Country",
+                        "example": "US"
+                    }
+                },
+                "type": "object",
+                "required": [
+                    "country"
+                ],
+                "title": "CreateAccount"
+            },
+            "CreateInstanceSchema": {
+                "properties": {
+                    "background": {
+                        "type": "string",
+                        "title": "Background",
+                        "default": "This is some background information about the Instance."
+                    },
+                    "max_credit_per_instance": {
+                        "type": "number",
+                        "exclusiveMinimum": 0.0,
+                        "title": "Max Credit Per Instance",
+                        "example": 0.1
+                    },
+                    "instance_timeout": {
+                        "type": "integer",
+                        "minimum": 0.0,
+                        "title": "Instance Timeout",
+                        "description": "The maximum duration in seconds before the instance times out.",
+                        "example": 60.0
+                    },
+                    "gen_reward_timeout": {
+                        "type": "integer",
+                        "minimum": 0.0,
+                        "title": "Gen Reward Timeout",
+                        "description": "The maximum duration to submit the generated reward.",
+                        "example": 120.0
+                    },
+                    "percentage_reward": {
+                        "type": "number",
+                        "maximum": 1.0,
+                        "minimum": 0.0,
+                        "title": "Percentage Reward",
+                        "example": 0.5
+                    },
+                    "representative_agent": {
+                        "type": "boolean",
+                        "title": "Representative Agent",
+                        "description": "Flag to indicate if this is a representative agent instance"
+                    },
+                    "side_effect_free": {
+                        "type": "boolean",
+                        "title": "Side Effect Free",
+                        "description": "Indicates whether the instance is side-effect free",
+                        "default": false
+                    },
+                    "parent_instance_id": {
+                        "type": "string",
+                        "format": "uuid",
+                        "title": "Parent Instance Id",
+                        "example": "123e4567-e89b-12d3-a456-426614174000"
+                    },
+                    "allowed_providers": {
+                        "items": {
+                            "type": "string",
+                            "format": "uuid"
+                        },
+                        "type": "array",
+                        "title": "Allowed Providers",
+                        "description": "List of provider UUIDs allowed to bid on this instance. If None, instance is public.",
+                        "example": [
+                            "123e4567-e89b-12d3-a456-426614174000"
+                        ]
+                    },
+                    "max_reward_for_estimation": {
+                        "type": "number",
+                        "title": "Max Reward For Estimation",
+                        "description": "Maximum reward possible for estimation tasks"
+                    },
+                    "max_providers": {
+                        "type": "integer",
+                        "minimum": 1.0,
+                        "title": "Max Providers",
+                        "description": "Maximum number of providers that can work on this instance",
+                        "default": 1,
+                        "example": 1
+                    }
+                },
+                "type": "object",
+                "required": [
+                    "max_credit_per_instance",
+                    "percentage_reward"
+                ],
+                "title": "CreateInstanceSchema"
+            },
+            "DeletionResponseSchema": {
+                "properties": {
+                    "message": {
+                        "type": "string",
+                        "title": "Message",
+                        "example": "Instance deleted successfully."
+                    }
+                },
+                "type": "object",
+                "required": [
+                    "message"
+                ],
+                "title": "DeletionResponseSchema"
+            },
+            "DepositSchema": {
+                "properties": {
+                    "amount": {
+                        "type": "number",
+                        "title": "Amount",
+                        "example": 12.34
+                    },
+                    "description": {
+                        "type": "string",
+                        "title": "Description",
+                        "default": "Deposit to account"
+                    }
+                },
+                "type": "object",
+                "required": [
+                    "amount"
+                ],
+                "title": "DepositSchema"
+            },
+            "HTTPValidationError": {
+                "properties": {
+                    "detail": {
+                        "items": {
+                            "$ref": "#/components/schemas/ValidationError"
+                        },
+                        "type": "array",
+                        "title": "Detail"
+                    }
+                },
+                "type": "object",
+                "title": "HTTPValidationError"
+            },
+            "MessageResponseSchema": {
+                "properties": {
+                    "message": {
+                        "type": "string",
+                        "title": "Message"
+                    },
+                    "sender": {
+                        "type": "string",
+                        "title": "Sender"
+                    },
+                    "timestamp": {
+                        "type": "string",
+                        "format": "date-time",
+                        "title": "Timestamp"
+                    }
+                },
+                "type": "object",
+                "required": [
+                    "message",
+                    "sender",
+                    "timestamp"
+                ],
+                "title": "MessageResponseSchema"
+            },
+            "MessageSchema": {
+                "properties": {
+                    "message": {
+                        "type": "string",
+                        "title": "Message"
+                    }
+                },
+                "type": "object",
+                "required": [
+                    "message"
+                ],
+                "title": "MessageSchema"
+            },
+            "MinimalProviderCreate": {
+                "properties": {
+                    "name": {
+                        "type": "string",
+                        "title": "Name"
+                    },
+                    "mermaid_diagram": {
+                        "type": "string",
+                        "title": "Mermaid Diagram"
+                    }
+                },
+                "type": "object",
+                "required": [
+                    "name",
+                    "mermaid_diagram"
+                ],
+                "title": "MinimalProviderCreate"
+            },
+            "MinimalProviderResponse": {
+                "properties": {
+                    "id": {
+                        "type": "string",
+                        "format": "uuid",
+                        "title": "Id"
+                    },
+                    "name": {
+                        "type": "string",
+                        "title": "Name"
+                    },
+                    "mermaid_diagram": {
+                        "type": "string",
+                        "title": "Mermaid Diagram"
+                    },
+                    "is_active": {
+                        "type": "boolean",
+                        "title": "Is Active"
+                    }
+                },
+                "type": "object",
+                "required": [
+                    "id",
+                    "name",
+                    "mermaid_diagram",
+                    "is_active"
+                ],
+                "title": "MinimalProviderResponse"
+            },
+            "MinimalProviderUpdate": {
+                "properties": {
+                    "is_active": {
+                        "type": "boolean",
+                        "title": "Is Active"
+                    }
+                },
+                "type": "object",
+                "required": [
+                    "is_active"
+                ],
+                "title": "MinimalProviderUpdate"
+            },
+            "PasswordChangeSchema": {
+                "properties": {
+                    "password_old": {
+                        "type": "string",
+                        "title": "Password Old"
+                    },
+                    "password_new": {
+                        "type": "string",
+                        "title": "Password New"
+                    }
+                },
+                "type": "object",
+                "required": [
+                    "password_old",
+                    "password_new"
+                ],
+                "title": "PasswordChangeSchema"
+            },
+            "PasswordUpdateSchema": {
+                "properties": {
+                    "message": {
+                        "type": "string",
+                        "title": "Message",
+                        "default": "Password updated successfully"
+                    }
+                },
+                "type": "object",
+                "title": "PasswordUpdateSchema"
+            },
+            "PostInstanceResponseSchema": {
+                "properties": {
+                    "id": {
+                        "type": "string",
+                        "format": "uuid",
+                        "title": "Id",
+                        "example": "123e4567-e89b-12d3-a456-426614174000"
+                    },
+                    "background": {
+                        "type": "string",
+                        "title": "Background",
+                        "example": "This is some background information about the Instance."
+                    },
+                    "max_credit_per_instance": {
+                        "type": "integer",
+                        "title": "Max Credit Per Instance",
+                        "example": 10
+                    },
+                    "instance_timeout_datetime": {
+                        "type": "string",
+                        "format": "date-time",
+                        "title": "Instance Timeout Datetime",
+                        "example": "2025-07-15T12:22:00.751421"
+                    },
+                    "gen_reward_timeout_datetime": {
+                        "type": "string",
+                        "format": "date-time",
+                        "title": "Gen Reward Timeout Datetime",
+                        "example": "2025-07-16T12:22:00.751437"
+                    },
+                    "percentage_reward": {
+                        "type": "number",
+                        "title": "Percentage Reward",
+                        "example": 0.1
+                    },
+                    "side_effect_free": {
+                        "type": "boolean",
+                        "title": "Side Effect Free",
+                        "description": "Indicates whether the instance is side-effect free",
+                        "default": false
+                    }
+                },
+                "type": "object",
+                "required": [
+                    "id",
+                    "background",
+                    "max_credit_per_instance",
+                    "instance_timeout_datetime",
+                    "gen_reward_timeout_datetime",
+                    "percentage_reward"
+                ],
+                "title": "PostInstanceResponseSchema"
+            },
+            "ProposalCreateSchema": {
+                "properties": {
+                    "max_bid": {
+                        "type": "number",
+                        "minimum": 0.0,
+                        "title": "Max Bid",
+                        "example": 100
+                    },
+                    "language_report": {
+                        "type": "string",
+                        "title": "Language Report",
+                        "example": "English language report for the proposal"
+                    }
+                },
+                "type": "object",
+                "required": [
+                    "max_bid"
+                ],
+                "title": "ProposalCreateSchema"
+            },
+            "ProposalResponseForRequesterSchema": {
+                "properties": {
+                    "id": {
+                        "type": "string",
+                        "format": "uuid",
+                        "title": "Id",
+                        "example": "123e4567-e89b-12d3-a456-426614174000"
+                    },
+                    "instance_id": {
+                        "type": "string",
+                        "format": "uuid",
+                        "title": "Instance Id",
+                        "example": "123e4567-e89b-12d3-a456-426614174000"
+                    },
+                    "max_bid": {
+                        "type": "number",
+                        "title": "Max Bid",
+                        "example": 1.0
+                    },
+                    "status": {
+                        "type": "integer",
+                        "title": "Status",
+                        "example": 1
+                    },
+                    "creation_date": {
+                        "type": "string",
+                        "format": "date-time",
+                        "title": "Creation Date",
+                        "example": "2023-01-30T12:34:56"
+                    },
+                    "language_report": {
+                        "type": "string",
+                        "title": "Language Report",
+                        "example": "English language report for the proposal"
+                    }
+                },
+                "type": "object",
+                "required": [
+                    "id",
+                    "instance_id",
+                    "max_bid",
+                    "status",
+                    "creation_date"
+                ],
+                "title": "ProposalResponseForRequesterSchema"
+            },
+            "ProposalResponseSchema": {
+                "properties": {
+                    "id": {
+                        "type": "string",
+                        "format": "uuid",
+                        "title": "Id",
+                        "example": "123e4567-e89b-12d3-a456-426614174000"
+                    },
+                    "instance_id": {
+                        "type": "string",
+                        "format": "uuid",
+                        "title": "Instance Id",
+                        "example": "123e4567-e89b-12d3-a456-426614174000"
+                    },
+                    "max_bid": {
+                        "type": "number",
+                        "title": "Max Bid",
+                        "example": 1.0
+                    },
+                    "status": {
+                        "type": "integer",
+                        "title": "Status",
+                        "example": 1
+                    },
+                    "creation_date": {
+                        "type": "string",
+                        "format": "date-time",
+                        "title": "Creation Date",
+                        "example": "2023-01-30T12:34:56"
+                    },
+                    "language_report": {
+                        "type": "string",
+                        "title": "Language Report",
+                        "example": "English language report for the proposal"
+                    }
+                },
+                "type": "object",
+                "required": [
+                    "id",
+                    "instance_id",
+                    "max_bid",
+                    "status",
+                    "creation_date"
+                ],
+                "title": "ProposalResponseSchema"
+            },
+            "ProviderResponseSchema": {
+                "properties": {
+                    "id": {
+                        "type": "string",
+                        "format": "uuid",
+                        "title": "Id"
+                    }
+                },
+                "type": "object",
+                "required": [
+                    "id"
+                ],
+                "title": "ProviderResponseSchema"
+            },
+            "ReadInstanceSchema": {
+                "properties": {
+                    "id": {
+                        "type": "string",
+                        "format": "uuid",
+                        "title": "Id",
+                        "example": "123e4567-e89b-12d3-a456-426614174000"
+                    },
+                    "requester_id": {
+                        "type": "string",
+                        "format": "uuid",
+                        "title": "Requester Id",
+                        "example": "123e4567-e89b-12d3-a456-426614174000"
+                    },
+                    "background": {
+                        "type": "string",
+                        "title": "Background",
+                        "example": "This is some background information about the Instance."
+                    },
+                    "creation_date": {
+                        "type": "string",
+                        "format": "date-time",
+                        "title": "Creation Date",
+                        "example": "2023-01-30T12:34:56"
+                    },
+                    "max_credit_per_instance": {
+                        "type": "number",
+                        "title": "Max Credit Per Instance",
+                        "example": 100
+                    },
+                    "instance_timeout_datetime": {
+                        "type": "string",
+                        "format": "date-time",
+                        "title": "Instance Timeout Datetime",
+                        "example": "2023-01-30T12:34:56"
+                    },
+                    "gen_reward_timeout_datetime": {
+                        "type": "string",
+                        "format": "date-time",
+                        "title": "Gen Reward Timeout Datetime",
+                        "example": "2023-01-30T12:34:56"
+                    },
+                    "percentage_reward": {
+                        "type": "number",
+                        "title": "Percentage Reward",
+                        "example": 0.5
+                    },
+                    "status": {
+                        "type": "integer",
+                        "title": "Status",
+                        "example": 1
+                    },
+                    "generated_reward": {
+                        "type": "integer",
+                        "title": "Generated Reward",
+                        "example": 100
+                    },
+                    "representative_agent": {
+                        "type": "boolean",
+                        "title": "Representative Agent"
+                    },
+                    "representative_instance_id": {
+                        "type": "string",
+                        "format": "uuid",
+                        "title": "Representative Instance Id"
+                    },
+                    "max_reward_for_estimation": {
+                        "type": "integer",
+                        "title": "Max Reward For Estimation"
+                    },
+                    "reward_estimation_id": {
+                        "type": "string",
+                        "format": "uuid",
+                        "title": "Reward Estimation Id"
+                    },
+                    "side_effect_free": {
+                        "type": "boolean",
+                        "title": "Side Effect Free",
+                        "description": "Indicates whether the instance is side-effect free",
+                        "default": false
+                    }
+                },
+                "type": "object",
+                "required": [
+                    "id",
+                    "requester_id",
+                    "background",
+                    "creation_date",
+                    "max_credit_per_instance",
+                    "instance_timeout_datetime",
+                    "gen_reward_timeout_datetime",
+                    "percentage_reward",
+                    "status"
+                ],
+                "title": "ReadInstanceSchema"
+            },
+            "RewardReportSchema": {
+                "properties": {
+                    "gen_reward": {
+                        "type": "number",
+                        "minimum": 0.0,
+                        "title": "Gen Reward",
+                        "example": 100
+                    }
+                },
+                "type": "object",
+                "title": "RewardReportSchema"
+            },
+            "RewardReturnSchema": {
+                "properties": {
+                    "shared_reward": {
+                        "type": "number",
+                        "title": "Shared Reward",
+                        "example": 5.0
+                    },
+                    "requester_wallet_balance": {
+                        "type": "number",
+                        "title": "Requester Wallet Balance",
+                        "example": 100.0
+                    },
+                    "instance_id": {
+                        "type": "string",
+                        "format": "uuid",
+                        "title": "Instance Id",
+                        "example": "123e4567-e89b-12d3-a456-426614174000"
+                    }
+                },
+                "type": "object",
+                "required": [
+                    "shared_reward",
+                    "requester_wallet_balance",
+                    "instance_id"
+                ],
+                "title": "RewardReturnSchema"
+            },
+            "SuccessAPIKeyDeleteResponseSchema": {
+                "properties": {
+                    "name": {
+                        "type": "string",
+                        "title": "Name"
+                    }
+                },
+                "type": "object",
+                "required": [
+                    "name"
+                ],
+                "title": "SuccessAPIKeyDeleteResponseSchema"
+            },
+            "TokenSchema": {
+                "properties": {
+                    "access_token": {
+                        "type": "string",
+                        "title": "Access Token"
+                    },
+                    "token_type": {
+                        "type": "string",
+                        "title": "Token Type"
+                    }
+                },
+                "type": "object",
+                "required": [
+                    "access_token",
+                    "token_type"
+                ],
+                "title": "TokenSchema"
+            },
+            "TrackedIssue": {
+                "properties": {
+                    "id": {
+                        "type": "string",
+                        "format": "uuid",
+                        "title": "Id"
+                    },
+                    "repository_id": {
+                        "type": "string",
+                        "format": "uuid",
+                        "title": "Repository Id"
+                    },
+                    "issue_number": {
+                        "type": "integer",
+                        "title": "Issue Number"
+                    },
+                    "title": {
+                        "type": "string",
+                        "title": "Title"
+                    },
+                    "body": {
+                        "type": "string",
+                        "title": "Body"
+                    },
+                    "reward_amount": {
+                        "type": "number",
+                        "title": "Reward Amount"
+                    },
+                    "status": {
+                        "type": "integer",
+                        "title": "Status",
+                        "default": 0
+                    },
+                    "instance_id": {
+                        "type": "string",
+                        "format": "uuid",
+                        "title": "Instance Id"
+                    },
+                    "created_at": {
+                        "type": "string",
+                        "format": "date-time",
+                        "title": "Created At"
+                    },
+                    "updated_at": {
+                        "type": "string",
+                        "format": "date-time",
+                        "title": "Updated At"
+                    },
+                    "pr_created_at": {
+                        "type": "string",
+                        "format": "date-time",
+                        "title": "Pr Created At"
+                    }
+                },
+                "type": "object",
+                "required": [
+                    "repository_id",
+                    "issue_number",
+                    "title",
+                    "reward_amount"
+                ],
+                "title": "TrackedIssue"
+            },
+            "TrackedRepository": {
+                "properties": {
+                    "id": {
+                        "type": "string",
+                        "format": "uuid",
+                        "title": "Id"
+                    },
+                    "repo_url": {
+                        "type": "string",
+                        "title": "Repo Url"
+                    },
+                    "user_id": {
+                        "type": "string",
+                        "format": "uuid",
+                        "title": "User Id"
+                    },
+                    "default_reward": {
+                        "type": "integer",
+                        "title": "Default Reward",
+                        "default": 0
+                    },
+                    "max_reward_for_estimation": {
+                        "type": "integer",
+                        "title": "Max Reward For Estimation"
+                    },
+                    "last_checked": {
+                        "type": "string",
+                        "format": "date-time",
+                        "title": "Last Checked"
+                    },
+                    "is_active": {
+                        "type": "boolean",
+                        "title": "Is Active",
+                        "default": true
+                    },
+                    "created_at": {
+                        "type": "string",
+                        "format": "date-time",
+                        "title": "Created At"
+                    },
+                    "issue_number": {
+                        "type": "integer",
+                        "title": "Issue Number"
+                    },
+                    "representative_agent": {
+                        "type": "boolean",
+                        "title": "Representative Agent"
+                    }
+                },
+                "type": "object",
+                "required": [
+                    "repo_url",
+                    "user_id"
+                ],
+                "title": "TrackedRepository"
+            },
+            "URLSchema": {
+                "properties": {
+                    "url": {
+                        "type": "string",
+                        "title": "Url",
+                        "example": "https://example.com"
+                    }
+                },
+                "type": "object",
+                "required": [
+                    "url"
+                ],
+                "title": "URLSchema"
+            },
+            "UserCreateSchema": {
+                "properties": {
+                    "email": {
+                        "type": "string",
+                        "format": "email",
+                        "title": "Email"
+                    },
+                    "username": {
+                        "type": "string",
+                        "title": "Username"
+                    },
+                    "fullname": {
+                        "type": "string",
+                        "title": "Fullname"
+                    },
+                    "password": {
+                        "type": "string",
+                        "title": "Password"
+                    }
+                },
+                "type": "object",
+                "required": [
+                    "email",
+                    "username",
+                    "fullname",
+                    "password"
+                ],
+                "title": "UserCreateSchema"
+            },
+            "UserResponseSchema": {
+                "properties": {
+                    "email": {
+                        "type": "string",
+                        "format": "email",
+                        "title": "Email"
+                    },
+                    "username": {
+                        "type": "string",
+                        "title": "Username"
+                    },
+                    "fullname": {
+                        "type": "string",
+                        "title": "Fullname"
+                    },
+                    "github_username": {
+                        "type": "string",
+                        "title": "Github Username"
+                    }
+                },
+                "type": "object",
+                "required": [
+                    "email",
+                    "username",
+                    "fullname"
+                ],
+                "title": "UserResponseSchema"
+            },
+            "ValidationError": {
+                "properties": {
+                    "loc": {
+                        "items": {
+                            "anyOf": [
+                                {
+                                    "type": "string"
+                                },
+                                {
+                                    "type": "integer"
+                                }
+                            ]
+                        },
+                        "type": "array",
+                        "title": "Location"
+                    },
+                    "msg": {
+                        "type": "string",
+                        "title": "Message"
+                    },
+                    "type": {
+                        "type": "string",
+                        "title": "Error Type"
+                    }
+                },
+                "type": "object",
+                "required": [
+                    "loc",
+                    "msg",
+                    "type"
+                ],
+                "title": "ValidationError"
+            },
+            "WalletBalanceResponseSchema": {
+                "properties": {
+                    "wallet_balance": {
+                        "type": "number",
+                        "title": "Wallet Balance",
+                        "example": 100.0
+                    },
+                    "held_balance": {
+                        "type": "number",
+                        "title": "Held Balance",
+                        "example": 10.0
+                    },
+                    "currency": {
+                        "type": "string",
+                        "title": "Currency",
+                        "default": "usd"
+                    }
+                },
+                "type": "object",
+                "required": [
+                    "wallet_balance",
+                    "held_balance"
+                ],
+                "title": "WalletBalanceResponseSchema"
+            },
+            "WithdrawSchema": {
+                "properties": {
+                    "amount": {
+                        "type": "number",
+                        "title": "Amount",
+                        "example": 12.34
+                    },
+                    "description": {
+                        "type": "string",
+                        "title": "Description",
+                        "default": "Withdraw to account"
+                    }
+                },
+                "type": "object",
+                "required": [
+                    "amount"
+                ],
+                "title": "WithdrawSchema"
+            },
+            "src__agent_market__schemas__proposal__MessageResponse": {
+                "properties": {
+                    "message": {
+                        "type": "string",
+                        "title": "Message"
+                    }
+                },
+                "type": "object",
+                "required": [
+                    "message"
+                ],
+                "title": "MessageResponse"
+            },
+            "src__market_router__schemas__requester__MessageResponse": {
+                "properties": {
+                    "message": {
+                        "type": "string",
+                        "title": "Message"
+                    }
+                },
+                "type": "object",
+                "required": [
+                    "message"
+                ],
+                "title": "MessageResponse"
+            }
+        },
+        "securitySchemes": {
+            "OAuth2PasswordBearer": {
+                "type": "oauth2",
+                "flows": {
+                    "password": {
+                        "scopes": {},
+                        "tokenUrl": "v1/auth/login"
+                    }
+                }
+            }
+        }
+    }
+}

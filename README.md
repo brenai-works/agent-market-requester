@@ -1,3 +1,22 @@
+<style>
+    .boxed {
+    background: #F2F2F2;
+    color: black;
+    border: 3px solid #535353;
+    margin: 0px auto;
+    width: 456px;
+    padding: 10px;
+    border-radius: 10px;
+    }
+    .num {
+    background: #F2F2F2;
+    color: black;
+    border: 3px solid #535353;
+    width: 25px;
+    border-radius: 10px;
+    }
+</style>
+
 # Agent Market Requester: Workgroup Assistant
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 [![OSF Registration](https://img.shields.io/badge/visit-stem_cell_therapy_research_for_SCI-blue)](https://osf.io/qz5fu)
@@ -95,11 +114,13 @@ These configuration variables are stored in the config file, ensuring the Agent 
       
 ## Evaluator and Group Objective
 
-An evaluator has been developed to evaluate performance of the LLM, and to facilitate group discussion. More information about this can be access through [here](https://github.com/brenai-works/stem-cell-SCI-screening). 
+An evaluator has been developed to evaluate performance of the LLM, and to facilitate group discussion.
 
 ## Multi-Step Agent Scenerio for Workgroup Assistant and Agent.Market Requester [Draft version]
 
 Below is a scenerio for a multi-step agent for Workgroup Assistants. The Workgroup Assistant agent can prompt in natural language and python programming code to request for an AI Service Agent to support group voting.
+
+![State Machine Diagram](state_machine.png)
 
 **Agent Prompt Directives (based on state-transitions)**:
 1. __[`>>Instruct`]__ the AI service agent on an action.
@@ -109,3 +130,197 @@ Below is a scenerio for a multi-step agent for Workgroup Assistants. The Workgro
 5. __[`>>Outcome`]__ of the AI agent service actions.
 6. __[`#Intention`]__ of the AI service agent state ready for next action.
 7. __[`#Context`]__ of the AI service agent state ready for next action.
+
+### <ins>Workgroup Assistant Agent Inital Prompt</ins>:
+
+<div class="num">
+<font size="4pt"><b>A.</b></font>
+</div>
+
+   ```
+   You are a helpful assistant agent who intends to support a workgroup called {{workgroup id}} on the Researcher Hub platform for some work on a research project on stem cell therapy for spinal cord injuries @[#Context] @[#Intention]. The workgroup has a user called {{user_id}} @[#Context]. You intend to execute a series of actions via prompts to help you achieve your tasks for supporting the workgroup [#Intention]. Listen to further instructions from any external agents before performing next actions.
+   ```
+
+**...[`>>listen`] & [`>>instruct`] external agent(s)...**
+
+<div class="num">
+<font size="4pt"><b>B.</b></font>
+</div>
+
+   ```
+   You intend to support the group through Agent.Market API using context of {{codesnippet.html}} file stored on GitHub Repo name called {{github_repo}} @[#Context] @[#Intention]. The user of the workgroup called {{user_id}} wants to be the account holder of Agent.Market @[#Context]. Write some python code that configure the market router and instance using python methods that can change the files {{.env}} and {{config.yaml}} in GitHub Repo called {{github_repo}}.
+   ```
+
+**...[`>>instruct`] agent to write and execute python ...**
+
+   ```
+    <<generated python code for previous prompt>>
+   ```
+
+**...[`>>outcome`] of agent ...**
+
+   ```
+   Before you changing files {{.env}} and {{config.yaml}} in GitHub Repo called {{github_repo}}, listen and collect the following information about the user called {{user_id}}:
+
+   - Deposit Amount: {{deposit_amount}}
+
+   Collect and change the file {{.env}}. As well, listen and collect the following information about the user called   
+
+   - Model: {{model_name}}
+   - Messages: {{message_list}}
+   - Background: {{backgroud_description}}
+   - Max Credit per Instance: {{max_credit}}
+   - Instance Timeout: {{timeout_ammount}}
+   - Gen Reward Timeout: {{timeout_sec}}
+   - Gen Reward: {{reward_amount}}
+   - Percentage Reward: {{reward_percentage}}
+
+  Collect and change the file {{config.yaml}}.
+   ```
+
+**...[`>>listen`] & [`>>collect`] information...**
+
+<div class="num">
+<font size="4pt"><b>C.</b></font>
+</div>
+
+   ```
+   You intend to support the group through Agent.Market API using context of {{codesnippet.html}} file stored on GitHub Repo name called {{github_repo}} @[#context] @[#intention]. The user called {{user_id}} is a EXISTING account holder of Researcher Hub @[#context]. Listen and collect the following information about the user called {{user_id}}:
+
+   - Username: {{username}}
+   - Password: {{password}}
+   - Email address: {{email}}
+   - Password: {{password}}
+
+   Collect and change the file {{.env}}.
+   ```
+
+**...[`>>listen`] & [`>>collect`] information...**
+
+   ```
+   Refer to {{codesnippet.html}} file stored on GitHub Repo name called {{github_repo}} @[#context]. Write some python code that register the EXISTING user using the appropriate python method {{python_method}} from the SDK. 
+   ```
+**...[`>>instruct`] agent to write and execute python ...**
+
+   ```
+    <<generated python code for previous prompt>>
+   ```
+
+**...[`>>decide`]\<`OR`\> on action to proceed with registation for new user or registation for prior user...**
+
+   ```
+   You intend to support the group through Agent.Market API using context of {{codesnippet.html}} file stored on GitHub Repo name called {{github_repo}} @[#context] @[#intention]. The user called {{user_id}} is a NEW account holder of Researcher Hub @[#context]. Listen and collect the following information about the user called {{user_id}}:
+
+   - Username: {{username}}
+   - Password: {{password}}
+   - Email address: {{email}}
+   - Password: {{password}}
+
+   Collect and change the file {{.env}}.
+   ```
+
+**...[`>>listen`] & [`>>collect`] information...**
+
+   ```
+   Refer to {{codesnippet.html}} file stored on GitHub Repo name called {{github_repo}} @[#context]. Write some python code that register the NEW user using the appropriate python method {{python_method}} from the SDK. 
+   ```
+
+**...[`>>instruct`] agent to write and execute python ...**
+
+   ```
+    <<generated python code for previous prompt>>
+   ```
+
+**...[`>>outcome`] of agent ...**
+
+<div class="num">
+<font size="4pt"><b>D.</b></font>
+</div>
+
+   ```
+   Refer to the {{codesnippet.html}} file stored on GitHub Repo name called {{github_repo}} @[#context]. You are told that user called {{user_id}} is an account holder of Researcher Hub, and belong to workgroup called {{workgroup_id}} @[#context]. Write some python code that generates a new API key for the user using python method called {{python_method}} from the SDK.
+   ```
+
+**...[`>>instruct`] agent to write and execute python ...**
+
+   ```
+    <<generated python code for previous prompt>>
+   ```
+
+**...[`>>outcome`] of agent ...**
+
+<div class="num">
+<font size="4pt"><b>E.</b></font>
+</div>
+
+   ```
+   Refer to the {{codesnippet.html}} file stored on GitHub Repo name called {{github_repo}} @[#context]. You are told that user called {{user_id}} is an account holder of Researcher Hub, and belong to workgroup called {{workgroup_id}} @[#context]. Write some python code that deposit credit in the wallet using python method called {{python_method}} from the SDK.
+   ```
+
+**...[`>>instruct`] agent to write and execute python ...**
+
+   ```
+    <<generated python code for previous prompt>>
+   ```
+
+**...[`>>outcome`] of agent ...**
+
+<div class="num">
+<font size="4pt"><b>F.</b></font>
+</div>
+
+   ```
+   Refer to the {{codesnippet.html}} file stored on GitHub Repo name called {{github_repo}} @[#context]. You are told that user called {{user_id}} is an account holder of Researcher Hub, and belong to workgroup called {{workgroup_id}} @[#context]. Write some python code that creates an instance using python method called {{python_method}} from the SDK, and parameters from config file called {{config.yaml}}.
+   ```
+
+**...[`>>instruct`] agent to write and execute python ...**
+
+   ```
+    <<generated python code for previous prompt>>
+   ```
+
+**...[`>>outcome`] of agent ...**
+
+<div class="num">
+<font size="4pt"><b>G.</b></font>
+</div>
+
+<p align="center">
+<br />
+<div class="boxed">
+<font size="4pt"><b>AI Service Agent Discovery...</b></font>
+</div>
+<br />
+</p>
+
+<div class="num">
+<font size="4pt"><b>H.</b></font>
+</div>
+
+   ```
+   Refer to the {{codesnippet.html}} file stored on GitHub Repo name called {{github_repo}} @[#context]. Write some python code that gets the winning proposal endpoint for an AI Service Agent, using the python method called {{python_method}} from the SDK. 
+   ```
+
+**...[`>>instruct`] agent to write and execute python ...**
+
+   ```
+    <<generated python code for previous prompt>>
+   ```
+
+**...[`>>outcome`] of agent ...**
+
+<div class="num">
+<font size="4pt"><b>I.</b></font>
+</div>
+
+   ```
+   Refer to the {{codesnippet.html}} file stored on GitHub Repo name called {{github_repo}} @[#context]. Write some python code that gets submits the reward of the winning proposal endpoint for an AI Service Agent, using the python method called {{python_method}} from the SDK. 
+   ```
+   
+**...[`>>instruct`] agent to write and execute python ...**
+
+   ```
+    <<generated python code for previous prompt>>
+   ```
+
+**...[`>>outcome`] of agent ...**
