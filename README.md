@@ -133,19 +133,16 @@ Below is a scenerio for a multi-step agent for Workgroup Assistants. The Workgro
 
 ### <ins>Workgroup Assistant Agent Inital Prompt</ins>:
 
-<div class="num">
-<font size="4pt"><b>A.</b></font>
-</div>
-
+| A |
+| -- |
    ```
    You are a helpful assistant agent who intends to support a workgroup called {{workgroup id}} on the Researcher Hub platform for some work on a research project on stem cell therapy for spinal cord injuries @[#Context] @[#Intention]. The workgroup has a user called {{user_id}} @[#Context]. You intend to execute a series of actions via prompts to help you achieve your tasks for supporting the workgroup [#Intention]. Listen to further instructions from any external agents before performing next actions.
    ```
 
 **...[`>>listen`] & [`>>instruct`] external agent(s)...**
 
-<div class="num">
-<font size="4pt"><b>B.</b></font>
-</div>
+| B |
+| -- |
 
    ```
    You intend to support the group through Agent.Market API using context of {{codesnippet.html}} file stored on GitHub Repo name called {{github_repo}} @[#Context] @[#Intention]. The user of the workgroup called {{user_id}} wants to be the account holder of Agent.Market @[#Context]. Write some python code that configure the market router and instance using python methods that can change the files {{.env}} and {{config.yaml}} in GitHub Repo called {{github_repo}}.
@@ -180,9 +177,8 @@ Below is a scenerio for a multi-step agent for Workgroup Assistants. The Workgro
 
 **...[`>>listen`] & [`>>collect`] information...**
 
-<div class="num">
-<font size="4pt"><b>C.</b></font>
-</div>
+| C |
+| -- |
 
    ```
    You intend to support the group through Agent.Market API using context of {{codesnippet.html}} file stored on GitHub Repo name called {{github_repo}} @[#context] @[#intention]. The user called {{user_id}} is a EXISTING account holder of Researcher Hub @[#context]. Listen and collect the following information about the user called {{user_id}}:
@@ -233,9 +229,8 @@ Below is a scenerio for a multi-step agent for Workgroup Assistants. The Workgro
 
 **...[`>>outcome`] of agent ...**
 
-<div class="num">
-<font size="4pt"><b>D.</b></font>
-</div>
+| D |
+| -- |
 
    ```
    Refer to the {{codesnippet.html}} file stored on GitHub Repo name called {{github_repo}} @[#context]. You are told that user called {{user_id}} is an account holder of Researcher Hub, and belong to workgroup called {{workgroup_id}} @[#context]. Write some python code that generates a new API key for the user using python method called {{python_method}} from the SDK.
@@ -249,9 +244,8 @@ Below is a scenerio for a multi-step agent for Workgroup Assistants. The Workgro
 
 **...[`>>outcome`] of agent ...**
 
-<div class="num">
-<font size="4pt"><b>E.</b></font>
-</div>
+| E |
+| -- |
 
    ```
    Refer to the {{codesnippet.html}} file stored on GitHub Repo name called {{github_repo}} @[#context]. You are told that user called {{user_id}} is an account holder of Researcher Hub, and belong to workgroup called {{workgroup_id}} @[#context]. Write some python code that deposit credit in the wallet using python method called {{python_method}} from the SDK.
@@ -265,9 +259,8 @@ Below is a scenerio for a multi-step agent for Workgroup Assistants. The Workgro
 
 **...[`>>outcome`] of agent ...**
 
-<div class="num">
-<font size="4pt"><b>F.</b></font>
-</div>
+| F |
+| -- |
 
    ```
    Refer to the {{codesnippet.html}} file stored on GitHub Repo name called {{github_repo}} @[#context]. You are told that user called {{user_id}} is an account holder of Researcher Hub, and belong to workgroup called {{workgroup_id}} @[#context]. Write some python code that creates an instance using python method called {{python_method}} from the SDK, and parameters from config file called {{config.yaml}}.
@@ -281,21 +274,17 @@ Below is a scenerio for a multi-step agent for Workgroup Assistants. The Workgro
 
 **...[`>>outcome`] of agent ...**
 
-<div class="num">
-<font size="4pt"><b>G.</b></font>
-</div>
+| G |
+| -- |
 
 <p align="center">
 <br />
-<div class="boxed">
 <font size="4pt"><b>AI Service Agent Discovery...</b></font>
-</div>
 <br />
 </p>
 
-<div class="num">
-<font size="4pt"><b>H.</b></font>
-</div>
+| H |
+| -- |
 
    ```
    Refer to the {{codesnippet.html}} file stored on GitHub Repo name called {{github_repo}} @[#context]. Write some python code that gets the winning proposal endpoint for an AI Service Agent, using the python method called {{python_method}} from the SDK. 
@@ -309,9 +298,8 @@ Below is a scenerio for a multi-step agent for Workgroup Assistants. The Workgro
 
 **...[`>>outcome`] of agent ...**
 
-<div class="num">
-<font size="4pt"><b>I.</b></font>
-</div>
+| I |
+| -- |
 
    ```
    Refer to the {{codesnippet.html}} file stored on GitHub Repo name called {{github_repo}} @[#context]. Write some python code that gets submits the reward of the winning proposal endpoint for an AI Service Agent, using the python method called {{python_method}} from the SDK. 
