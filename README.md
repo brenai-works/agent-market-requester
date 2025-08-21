@@ -116,142 +116,112 @@ Below is a scenerio for a multi-step agent for Workgroup Assistants. The Workgro
 
 | A |
 | -- |
-   ```
-   You are a helpful assistant agent who intends to support a workgroup called {{workgroup id}} on the Researcher Hub platform for some work on a research project on stem cell therapy for spinal cord injuries @[#Context] @[#Intention]. The workgroup has a user called {{user_id}} @[#Context]. You intend to execute a series of actions via prompts to help you achieve your tasks for supporting the workgroup [#Intention]. Listen to further instructions from any external agents before performing next actions.
-   ```
+
+>You are a helpful assistant agent who intends to support a workgroup called {{workgroup id}} on the Researcher Hub platform for some work on a research project on stem cell therapy for spinal cord injuries @[#Context] @[#Intention]. The workgroup has a user called {{user_id}} @[#Context]. You intend to execute a series of actions via prompts to help you achieve your tasks for supporting the workgroup [#Intention]. Listen to further instructions from any external agents before performing next actions.
 
 **...[`>>listen`] & [`>>instruct`] external agent(s)...**
 
 | B |
 | -- |
 
-   ```
-   You intend to support the group through Agent.Market API using context of {{codesnippet.html}} file stored on GitHub Repo name called {{github_repo}} @[#Context] @[#Intention]. The user of the workgroup called {{user_id}} wants to be the account holder of Agent.Market @[#Context]. Write some python code that configure the market router and instance using python methods that can change the files {{.env}} and {{config.yaml}} in GitHub Repo called {{github_repo}}.
-   ```
+>You intend to support the group through Agent.Market API using context of {{codesnippet.html}} file stored on GitHub Repo name called {{github_repo}} @[#Context] @[#Intention]. The user of the workgroup called {{user_id}} wants to be the account holder of Agent.Market @[#Context]. Write some python code that configure the market router and instance using python methods that can change the files {{.env}} and {{config.yaml}} in GitHub Repo called {{github_repo}}.
 
 **...[`>>instruct`] agent to write and execute python ...**
 
-   ```
-    <<generated python code for previous prompt>>
-   ```
+><\<generated python code for previous prompt>>
 
 **...[`>>outcome`] of agent ...**
 
-   ```
-   Before you changing files {{.env}} and {{config.yaml}} in GitHub Repo called {{github_repo}}, listen and collect the following information about the user called {{user_id}}:
-
-   - Deposit Amount: {{deposit_amount}}
-
-   Collect and change the file {{.env}}. As well, listen and collect the following information about the user called   
-
-   - Model: {{model_name}}
-   - Messages: {{message_list}}
-   - Background: {{backgroud_description}}
-   - Max Credit per Instance: {{max_credit}}
-   - Instance Timeout: {{timeout_ammount}}
-   - Gen Reward Timeout: {{timeout_sec}}
-   - Gen Reward: {{reward_amount}}
-   - Percentage Reward: {{reward_percentage}}
-
-  Collect and change the file {{config.yaml}}.
-   ```
+>Before you changing files {{.env}} and {{config.yaml}} in GitHub Repo called {{github_repo}}, listen and collect the following information about the user called {{user_id}}:
+>
+>- Deposit Amount: {{deposit_amount}}
+>
+>Collect and change the file {{.env}}. As well, listen and collect the following information about the user called   
+>
+>- Model: {{model_name}}
+>- Messages: {{message_list}}
+>- Background: {{backgroud_description}}
+>- Max Credit per Instance: {{max_credit}}
+>- Instance Timeout: {{timeout_ammount}}
+>- Gen Reward Timeout: {{timeout_sec}}
+>- Gen Reward: {{reward_amount}}
+>- Percentage Reward: {{reward_percentage}}
+>
+>Collect and change the file {{config.yaml}}.
 
 **...[`>>listen`] & [`>>collect`] information...**
 
 | C |
 | -- |
 
-   ```
-   You intend to support the group through Agent.Market API using context of {{codesnippet.html}} file stored on GitHub Repo name called {{github_repo}} @[#context] @[#intention]. The user called {{user_id}} is a EXISTING account holder of Researcher Hub @[#context]. Listen and collect the following information about the user called {{user_id}}:
-
-   - Username: {{username}}
-   - Password: {{password}}
-   - Email address: {{email}}
-   - Password: {{password}}
-
-   Collect and change the file {{.env}}.
-   ```
+>You intend to support the group through Agent.Market API using context of {{codesnippet.html}} file stored on GitHub Repo name called {{github_repo}} @[#context] @[#intention]. The user called {{user_id}} is a EXISTING account holder of Researcher Hub @[#context]. Listen and collect the following information about the user called {{user_id}}:
+>
+>- Username: {{username}}
+>- Password: {{password}}
+>- Email address: {{email}}
+>- Password: {{password}}
+>
+>Collect and change the file {{.env}}.
 
 **...[`>>listen`] & [`>>collect`] information...**
 
-   ```
-   Refer to {{codesnippet.html}} file stored on GitHub Repo name called {{github_repo}} @[#context]. Write some python code that register the EXISTING user using the appropriate python method {{python_method}} from the SDK. 
-   ```
+>Refer to {{codesnippet.html}} file stored on GitHub Repo name called {{github_repo}} @[#context]. Write some python code that register the EXISTING user using the appropriate python method {{python_method}} from the SDK. 
+
 **...[`>>instruct`] agent to write and execute python ...**
 
-   ```
-    <<generated python code for previous prompt>>
-   ```
+><\<generated python code for previous prompt>>
 
 **...[`>>decide`]\<`OR`\> on action to proceed with registation for new user or registation for prior user...**
 
-   ```
-   You intend to support the group through Agent.Market API using context of {{codesnippet.html}} file stored on GitHub Repo name called {{github_repo}} @[#context] @[#intention]. The user called {{user_id}} is a NEW account holder of Researcher Hub @[#context]. Listen and collect the following information about the user called {{user_id}}:
-
-   - Username: {{username}}
-   - Password: {{password}}
-   - Email address: {{email}}
-   - Password: {{password}}
-
-   Collect and change the file {{.env}}.
-   ```
+>You intend to support the group through Agent.Market API using context of {{codesnippet.html}} file stored on GitHub Repo name called {{github_repo}} @[#context] @[#intention]. The user called {{user_id}} is a NEW account holder of Researcher Hub @[#context]. Listen and collect the following information about the user called {{user_id}}:
+>
+>- Username: {{username}}
+>- Password: {{password}}
+>- Email address: {{email}}
+>- Password: {{password}}
+>
+>Collect and change the file {{.env}}.
 
 **...[`>>listen`] & [`>>collect`] information...**
 
-   ```
-   Refer to {{codesnippet.html}} file stored on GitHub Repo name called {{github_repo}} @[#context]. Write some python code that register the NEW user using the appropriate python method {{python_method}} from the SDK. 
-   ```
+>Refer to {{codesnippet.html}} file stored on GitHub Repo name called {{github_repo}} @[#context]. Write some python code that register the NEW user using the appropriate python method {{python_method}} from the SDK. 
 
 **...[`>>instruct`] agent to write and execute python ...**
 
-   ```
-    <<generated python code for previous prompt>>
-   ```
+><\<generated python code for previous prompt>>
 
 **...[`>>outcome`] of agent ...**
 
 | D |
 | -- |
 
-   ```
-   Refer to the {{codesnippet.html}} file stored on GitHub Repo name called {{github_repo}} @[#context]. You are told that user called {{user_id}} is an account holder of Researcher Hub, and belong to workgroup called {{workgroup_id}} @[#context]. Write some python code that generates a new API key for the user using python method called {{python_method}} from the SDK.
-   ```
+>Refer to the {{codesnippet.html}} file stored on GitHub Repo name called {{github_repo}} @[#context]. You are told that user called {{user_id}} is an account holder of Researcher Hub, and belong to workgroup called {{workgroup_id}} @[#context]. Write some python code that generates a new API key for the user using python method called {{python_method}} from the SDK.
 
 **...[`>>instruct`] agent to write and execute python ...**
 
-   ```
-    <<generated python code for previous prompt>>
-   ```
+><\<generated python code for previous prompt>>
 
 **...[`>>outcome`] of agent ...**
 
 | E |
 | -- |
 
-   ```
-   Refer to the {{codesnippet.html}} file stored on GitHub Repo name called {{github_repo}} @[#context]. You are told that user called {{user_id}} is an account holder of Researcher Hub, and belong to workgroup called {{workgroup_id}} @[#context]. Write some python code that deposit credit in the wallet using python method called {{python_method}} from the SDK.
-   ```
+>Refer to the {{codesnippet.html}} file stored on GitHub Repo name called {{github_repo}} @[#context]. You are told that user called {{user_id}} is an account holder of Researcher Hub, and belong to workgroup called {{workgroup_id}} @[#context]. Write some python code that deposit credit in the wallet using python method called {{python_method}} from the SDK.
 
 **...[`>>instruct`] agent to write and execute python ...**
 
-   ```
-    <<generated python code for previous prompt>>
-   ```
+><\<generated python code for previous prompt>>
 
 **...[`>>outcome`] of agent ...**
 
 | F |
 | -- |
 
-   ```
-   Refer to the {{codesnippet.html}} file stored on GitHub Repo name called {{github_repo}} @[#context]. You are told that user called {{user_id}} is an account holder of Researcher Hub, and belong to workgroup called {{workgroup_id}} @[#context]. Write some python code that creates an instance using python method called {{python_method}} from the SDK, and parameters from config file called {{config.yaml}}.
-   ```
+>Refer to the {{codesnippet.html}} file stored on GitHub Repo name called {{github_repo}} @[#context]. You are told that user called {{user_id}} is an account holder of Researcher Hub, and belong to workgroup called {{workgroup_id}} @[#context]. Write some python code that creates an instance using python method called {{python_method}} from the SDK, and parameters from config file called {{config.yaml}}.
 
 **...[`>>instruct`] agent to write and execute python ...**
 
-   ```
-    <<generated python code for previous prompt>>
-   ```
+><\<generated python code for previous prompt>>
 
 **...[`>>outcome`] of agent ...**
 
@@ -264,29 +234,21 @@ Below is a scenerio for a multi-step agent for Workgroup Assistants. The Workgro
 | H |
 | -- |
 
-   ```
-   Refer to the {{codesnippet.html}} file stored on GitHub Repo name called {{github_repo}} @[#context]. Write some python code that gets the winning proposal endpoint for an AI Service Agent, using the python method called {{python_method}} from the SDK. 
-   ```
+>Refer to the {{codesnippet.html}} file stored on GitHub Repo name called {{github_repo}} @[#context]. Write some python code that gets the winning proposal endpoint for an AI Service Agent, using the python method called {{python_method}} from the SDK. 
 
 **...[`>>instruct`] agent to write and execute python ...**
 
-   ```
-    <<generated python code for previous prompt>>
-   ```
+><\<generated python code for previous prompt>>
 
 **...[`>>outcome`] of agent ...**
 
 | I |
 | -- |
 
-   ```
-   Refer to the {{codesnippet.html}} file stored on GitHub Repo name called {{github_repo}} @[#context]. Write some python code that gets submits the reward of the winning proposal endpoint for an AI Service Agent, using the python method called {{python_method}} from the SDK. 
-   ```
+>Refer to the {{codesnippet.html}} file stored on GitHub Repo name called {{github_repo}} @[#context]. Write some python code that gets submits the reward of the winning proposal endpoint for an AI Service Agent, using the python method called {{python_method}} from the SDK. 
    
 **...[`>>instruct`] agent to write and execute python ...**
 
-   ```
-    <<generated python code for previous prompt>>
-   ```
+><\<generated python code for previous prompt>>
 
 **...[`>>outcome`] of agent ...**
