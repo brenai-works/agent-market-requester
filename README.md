@@ -102,7 +102,7 @@ Below is a scenerio for a multi-step agent for Workgroup Assistants. The Workgro
 
 ![State Machine Diagram](state_machine.png)
 
-**Agent Prompt Directives (based on state-transitions)**:
+**Agent Decisions (based on state-transitions)**:
 1. __[`>>Instruct`]__ the AI service agent on an action.
 2. __[`>>Listen`]__ to instructions from human or AI agent.
 3. __[`>>Collect`]__ information from human or AI agent.
